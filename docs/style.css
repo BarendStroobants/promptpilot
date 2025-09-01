@@ -317,3 +317,148 @@ label .hint {
   font-size: var(--fs-0);
   margin-top: 0.15rem;
 }
+/* ===== Fancy landing: 3D roulette ===== */
+.fancy-wrap {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: clamp(420px, 60vh, 720px);
+  perspective: 1200px;
+  padding: 2rem 0;
+}
+.fancy-ring {
+  position: relative;
+  width: min(90vw, 880px);
+  height: min(90vw, 880px);
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: filter 0.2s;
+}
+.fancy-bubble {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  width: 160px;
+  height: 160px;
+  margin: auto;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  transform-style: preserve-3d;
+  cursor: pointer;
+  user-select: none;
+}
+.fancy-bubble .title {
+  text-align: center;
+  font-weight: 700;
+  padding: 0.5rem 0.75rem;
+}
+.fancy-bubble .meta {
+  font-size: var(--fs-0);
+  color: var(--muted);
+}
+.fancy-bubble:focus-visible {
+  outline: 2px solid var(--brand);
+}
+
+/* diepte: bubbels verder weg iets kleiner/doorzichtiger */
+.fancy-bubble[data-depth="back"] {
+  filter: brightness(0.9);
+  opacity: 0.7;
+}
+
+/* instructietekst */
+.fancy-hint {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: var(--fs-0);
+}
+
+/* Fallback voor mensen die animatie willen vermijden */
+@media (prefers-reduced-motion: reduce) {
+  .fancy-wrap {
+    display: none;
+  }
+}
+/* ===== Purple glass bubbles ===== */
+:root {
+  --glass-purple-1: rgba(124, 64, 255, 0.35);
+  --glass-purple-2: rgba(62, 0, 155, 0.35);
+  --glass-border: rgba(170, 130, 255, 0.55);
+  --neon-blue: #8fd3ff; /* heldere blauw voor tekst */
+}
+
+.fancy-bubble {
+  width: 168px;
+  height: 168px;
+  background: radial-gradient(
+      120% 140% at 70% 8%,
+      rgba(255, 255, 255, 0.35),
+      rgba(255, 255, 255, 0) 60%
+    ),
+    radial-gradient(
+      100% 100% at 30% 120%,
+      var(--glass-purple-1),
+      var(--glass-purple-2)
+    ),
+    linear-gradient(
+      to bottom right,
+      rgba(110, 32, 220, 0.35),
+      rgba(60, 0, 140, 0.35)
+    );
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 12px 32px rgba(110, 32, 220, 0.35),
+    inset 0 1px 14px rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px) saturate(120%);
+}
+
+.fancy-bubble .title {
+  color: var(--neon-blue);
+}
+.fancy-bubble .meta {
+  color: var(--neon-blue);
+  opacity: 0.85;
+}
+
+/* verder weg iets doffer */
+.fancy-bubble[data-depth="back"] {
+  filter: saturate(0.9) brightness(0.95);
+  opacity: 0.75;
+}
+
+/* icon <-> label crossfade */
+.fancy-bubble .icon {
+  font-size: 44px;
+  line-height: 1;
+  color: var(--neon-blue);
+  opacity: 0.95;
+  transform: translateY(2px);
+  transition: opacity 0.25s, transform 0.25s;
+}
+.fancy-bubble .label {
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.fancy-bubble:hover .icon,
+.fancy-bubble:focus-visible .icon {
+  opacity: 0;
+  transform: translateY(-6px) scale(0.9);
+}
+.fancy-bubble:hover .label,
+.fancy-bubble:focus-visible .label {
+  opacity: 1;
+}
+
+.fancy-ring.ring-back {
+  opacity: 0.85;
+  filter: saturate(0.95) blur(0.1px);
+}
+.fancy-ring.ring-front {
+  opacity: 1;
+}
