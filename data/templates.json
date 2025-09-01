@@ -418,5 +418,474 @@
     "prompt": "Maak leefregels die passen bij deze waarden: ⟨waarden⟩.",
     "output": ["Lijst leefregels"],
     "qc": ["Leefregels passen bij waarden", "Helder en uitvoerbaar"]
+  },
+  {
+    "id": "8-1",
+    "chapter": "8 · Sales, Customer & Support",
+    "title": "Discovery-script",
+    "when": "Voor sales- of intakegesprekken waar je snel de kern wilt blootleggen.",
+    "deliver": [
+      "10 discovery-vragen",
+      "Follow-ups per vraag",
+      "Signalen om op door te vragen"
+    ],
+    "inputFields": [
+      { "key": "doelgroep", "label": "Doelgroep", "type": "text" },
+      {
+        "key": "context",
+        "label": "Context (sales/intake/coaching)",
+        "type": "text"
+      },
+      {
+        "key": "doel",
+        "label": "Doel (fit/koopbereidheid/probleem)",
+        "type": "text"
+      },
+      {
+        "key": "tone",
+        "label": "Tone (adviserend/coachend/uitdagend)",
+        "type": "text"
+      }
+    ],
+    "prompt": "Maak een discovery-vragenlijst (10 vragen) voor ⟨doelgroep⟩.\nContext: ⟨context⟩\nDoel: ⟨doel⟩\nTone: ⟨tone⟩\n\nLever:\n1) 10 vragen\n2) Follow-ups (1 per vraag)\n3) Signalen om op door te vragen",
+    "output": ["Vragenlijst", "Follow-ups", "Signalen"],
+    "qc": [
+      "Open en niet-suggestief",
+      "Follow-ups verdiepen echt",
+      "Signalen observeerbaar"
+    ]
+  },
+  {
+    "id": "8-2",
+    "chapter": "8 · Sales, Customer & Support",
+    "title": "Objection-handling",
+    "when": "Bij bezwaren in sales of klantgesprekken.",
+    "deliver": [
+      "Top 8 bezwaren",
+      "Weerlegging + bewijs",
+      "Empathische framing"
+    ],
+    "inputFields": [
+      { "key": "product", "label": "Product/dienst", "type": "text" },
+      { "key": "doelgroep", "label": "Doelgroep", "type": "text" },
+      {
+        "key": "bezwaren",
+        "label": "Bekende bezwaren (optioneel)",
+        "type": "textarea"
+      },
+      {
+        "key": "bewijs",
+        "label": "Beschikbaar bewijs (cases/cijfers/testimonials)",
+        "type": "textarea"
+      }
+    ],
+    "prompt": "Som top 8 bezwaren voor ⟨product⟩ bij ⟨doelgroep⟩.\nBekende bezwaren: ⟨bezwaren⟩\nBewijs: ⟨bewijs⟩\n\nLever per bezwaar:\n- Korte weerlegging\n- Bewijs/voorbeeld\n- Empathische framing",
+    "output": ["Tabel bezwaar | weerlegging | bewijs | framing"],
+    "qc": [
+      "Weerlegging feitelijk",
+      "Empathisch, niet defensief",
+      "Bewijs concreet"
+    ]
+  },
+  {
+    "id": "8-3",
+    "chapter": "8 · Sales, Customer & Support",
+    "title": "Prijsstrategie-rationales",
+    "when": "Als je prijsmodellen wilt ontwerpen en onderbouwen.",
+    "deliver": [
+      "3 modellen (good/better/best)",
+      "Value-meters",
+      "Upsell-paden"
+    ],
+    "inputFields": [
+      { "key": "product", "label": "Product/dienst", "type": "text" },
+      { "key": "doelgroep", "label": "Doelgroep", "type": "text" },
+      { "key": "kosten", "label": "Kostenstructuur (kort)", "type": "text" },
+      {
+        "key": "concurrentie",
+        "label": "Concurrentieprijzen (range)",
+        "type": "text"
+      },
+      {
+        "key": "strategie",
+        "label": "Strategisch doel (premium/penetratie/upsell)",
+        "type": "text"
+      }
+    ],
+    "prompt": "Ontwerp 3 prijsmodellen voor ⟨product⟩.\nDoelgroep: ⟨doelgroep⟩\nKostenstructuur: ⟨kosten⟩\nConcurrentie: ⟨concurrentie⟩\nStrategisch doel: ⟨strategie⟩\n\nLever:\n1) Good/Better/Best\n2) Value-meters\n3) Upsell-paden",
+    "output": ["Tabel met 3 modellen + value-meters + upsells"],
+    "qc": [
+      "Modellen onderscheidend",
+      "Value-meters logisch",
+      "Upsells realistisch"
+    ]
+  },
+  {
+    "id": "8-4",
+    "chapter": "8 · Sales, Customer & Support",
+    "title": "Succesplan 30-60-90",
+    "when": "Voor customer success, onboarding of aftersales.",
+    "deliver": [
+      "Acties per fase",
+      "Deliverables per fase",
+      "Success metrics per fase"
+    ],
+    "inputFields": [
+      {
+        "key": "klant",
+        "label": "Klanttype (nieuw/enterprise/MKB)",
+        "type": "text"
+      },
+      { "key": "product", "label": "Product/dienst", "type": "text" },
+      {
+        "key": "doelen",
+        "label": "Klantdoelen (ROI/adoptie/tevredenheid)",
+        "type": "textarea"
+      },
+      {
+        "key": "resources",
+        "label": "Resources (team/tools/docs)",
+        "type": "text"
+      }
+    ],
+    "prompt": "Maak een 30-60-90 dagen customer success-plan voor ⟨klant⟩.\nProduct: ⟨product⟩\nKlantdoelen: ⟨doelen⟩\nResources: ⟨resources⟩\n\nLever per fase:\n- Acties\n- Deliverables\n- Success metrics",
+    "output": ["Tabel Fase | Acties | Deliverables | Metrics"],
+    "qc": ["Metrics meetbaar", "Deliverables haalbaar", "Acties concreet"]
+  },
+  {
+    "id": "8-5",
+    "chapter": "8 · Sales, Customer & Support",
+    "title": "Support-macro’s",
+    "when": "Voor efficiënte en consistente support.",
+    "deliver": [
+      "8 macro’s",
+      "Korte (chat) en lange (mail) variant",
+      "Placeholders (⟨naam⟩, ⟨ticketnr⟩)"
+    ],
+    "inputFields": [
+      {
+        "key": "issues",
+        "label": "Top 5–10 issues (login/factuur/bug/...)",
+        "type": "textarea"
+      },
+      {
+        "key": "tone",
+        "label": "Tone (vriendelijk/professioneel/luchtig)",
+        "type": "text"
+      },
+      {
+        "key": "kanalen",
+        "label": "Kanalen (e-mail/chat/helpdesk)",
+        "type": "text"
+      },
+      { "key": "links", "label": "Links naar FAQ/docs", "type": "textarea" }
+    ],
+    "prompt": "Schrijf 8 support-macro’s voor ⟨issues⟩.\nTone: ⟨tone⟩\nKanalen: ⟨kanalen⟩\nResources: ⟨links⟩\n\nLever per macro:\n- Korte versie (chat)\n- Uitgebreide versie (mail)\n- Placeholders",
+    "output": ["8 macro’s met varianten"],
+    "qc": ["Oplossingsgericht", "Links bruikbaar", "Tone consistent"]
+  },
+  {
+    "id": "9-1",
+    "chapter": "9 · Leren, Coaching & Mentorschap",
+    "title": "Socratic coach",
+    "when": "Wanneer je helderheid of zelfinzicht zoekt via vragen i.p.v. advies.",
+    "deliver": [
+      "1 gerichte vraag per beurt",
+      "Korte samenvatting van je antwoord",
+      "3 opties: verdiepen/verbreden/afronden"
+    ],
+    "inputFields": [
+      { "key": "onderwerp", "label": "Onderwerp/keuze", "type": "text" },
+      {
+        "key": "doel",
+        "label": "Doel (helderheid/prioriteit/richting)",
+        "type": "text"
+      },
+      {
+        "key": "uitdaging",
+        "label": "Mate van uitdaging (mild/confronterend)",
+        "type": "text"
+      },
+      { "key": "tijd", "label": "Tijdskader (kort/diep)", "type": "text" }
+    ],
+    "prompt": "Speel coach met Socratic method.\nOnderwerp: ⟨onderwerp⟩\nDoel: ⟨doel⟩\nUitdaging: ⟨uitdaging⟩\nTijdskader: ⟨tijd⟩\n\nRegels:\n- Stel 1 vraag per beurt\n- Vat mijn antwoord kort samen\n- Eindig met 3 opties (verdiepen/verbreden/afronden)",
+    "output": ["Iteratieve dialoog"],
+    "qc": [
+      "Geen advies vermomd als vraag",
+      "Samenvattingen kloppen",
+      "Opties open en niet-sturend"
+    ]
+  },
+  {
+    "id": "9-2",
+    "chapter": "9 · Leren, Coaching & Mentorschap",
+    "title": "Interviewsimulatie",
+    "when": "Voorbereiding op sollicitaties, klantgesprekken of panels.",
+    "deliver": [
+      "8–10 vragen, één per beurt",
+      "Feedback per antwoord (1 sterk, 1 verbeterpunt)",
+      "Voorbeeldantwoord"
+    ],
+    "inputFields": [
+      { "key": "rol", "label": "Rol/functie", "type": "text" },
+      {
+        "key": "context",
+        "label": "Context (sollicitatie/media/klantpitch)",
+        "type": "text"
+      },
+      {
+        "key": "tone",
+        "label": "Tone (formeel/informeel/technisch)",
+        "type": "text"
+      },
+      {
+        "key": "themas",
+        "label": "Focusthema’s (skills/cultuurfit/motivatie)",
+        "type": "text"
+      }
+    ],
+    "prompt": "Simuleer een interview voor ⟨rol⟩.\nContext: ⟨context⟩\nTone: ⟨tone⟩\nFocusthema’s: ⟨themas⟩\n\nRegels:\n- Stel telkens 1 vraag\n- Wacht op mijn antwoord\n- Geef daarna feedback (1 sterk, 1 verbeterpunt) + voorbeeldantwoord",
+    "output": ["Gesimuleerde interviewflow"],
+    "qc": [
+      "Vragen rolrelevant",
+      "Feedback constructief",
+      "Voorbeeld realistisch"
+    ]
+  },
+  {
+    "id": "9-3",
+    "chapter": "9 · Leren, Coaching & Mentorschap",
+    "title": "Leerpad op maat (4 weken)",
+    "when": "Bij het aanleren van een nieuwe skill.",
+    "deliver": [
+      "Schema 4 weken (~3u/week)",
+      "Per week: theorie, oefening, output, evaluatie",
+      "Bronnen (boeken/video/oefenprojecten)"
+    ],
+    "inputFields": [
+      { "key": "skill", "label": "Skill", "type": "text" },
+      {
+        "key": "niveau",
+        "label": "Startniveau (beginner/intermediate/gevorderd)",
+        "type": "text"
+      },
+      { "key": "tijdpw", "label": "Beschikbare tijd per week", "type": "text" },
+      {
+        "key": "vormen",
+        "label": "Voorkeursvormen (lezen/video/doen)",
+        "type": "text"
+      },
+      { "key": "doel", "label": "Doel na 4 weken", "type": "text" }
+    ],
+    "prompt": "Ontwerp een 4-weken leerpad voor ⟨skill⟩.\nStartniveau: ⟨niveau⟩\nTijd/week: ⟨tijdpw⟩\nVoorkeursvormen: ⟨vormen⟩\nDoel: ⟨doel⟩\n\nLever per week:\n- Theorie\n- Oefening\n- Output (deliverable)\n- Evaluatiecriteria\n+ Suggesties voor bronnen",
+    "output": ["Schema per week met bullets"],
+    "qc": ["Realistisch qua tijd", "Progressieve opbouw", "Evaluatie concreet"]
+  },
+  {
+    "id": "9-4",
+    "chapter": "9 · Leren, Coaching & Mentorschap",
+    "title": "Reflectie-ritueel (dagstart & dag-einde)",
+    "when": "Als je dagelijkse focus en terugblik wilt structureren.",
+    "deliver": ["5 dagstart-checks", "5 dag-eindvragen", "Compact en meetbaar"],
+    "inputFields": [
+      {
+        "key": "doel",
+        "label": "Doel (productiviteit/balans/emotie)",
+        "type": "text"
+      },
+      {
+        "key": "tone",
+        "label": "Tone (zakelijk/speels/mindful)",
+        "type": "text"
+      },
+      {
+        "key": "tijd",
+        "label": "Tijdsbesteding (max 5 min of langer)",
+        "type": "text"
+      }
+    ],
+    "prompt": "Maak een dagstart-checklist en dag-eind-reflectie gericht op ⟨doel⟩.\nTone: ⟨tone⟩\nTijdsbesteding: ⟨tijd⟩\n\nLever:\n- 5 ochtend-checks (actiegericht)\n- 5 avond-reflecties (kort, meetbaar)",
+    "output": ["2 lijsten met 5 items"],
+    "qc": ["Checks actiegericht", "Reflecties concreet", "Past binnen tijd"]
+  },
+  {
+    "id": "9-5",
+    "chapter": "9 · Leren, Coaching & Mentorschap",
+    "title": "Accountability-lite (week)",
+    "when": "Om doelen concreet te maken zonder externe coach.",
+    "deliver": [
+      "Commitments (SMART)",
+      "Deadlines en meetpunten",
+      "Mini-beloningen per commitment"
+    ],
+    "inputFields": [
+      { "key": "doelen", "label": "Weekdoelen (lijst)", "type": "textarea" },
+      {
+        "key": "prioriteit",
+        "label": "Prioriteit (hoog/medium/laag)",
+        "type": "text"
+      },
+      { "key": "tijd", "label": "Beschikbare tijd", "type": "text" },
+      {
+        "key": "beloningen",
+        "label": "Beloningen die je motiveren",
+        "type": "textarea"
+      }
+    ],
+    "prompt": "Zet mijn weekdoelen om in commitments.\nDoelen: ⟨doelen⟩\nPrioriteit: ⟨prioriteit⟩\nTijd: ⟨tijd⟩\nBeloningen: ⟨beloningen⟩\n\nLever:\n1) Commitmentlijst (SMART geformuleerd)\n2) Deadlines en meetpunten\n3) Mini-beloning per commitment",
+    "output": ["Commitmentlijst met deadlines en beloningen"],
+    "qc": ["SMART geformuleerd", "Max 5 commitments", "Beloningen passend"]
+  },
+  {
+    "id": "10-1",
+    "chapter": "10 · Code, Data & Tools",
+    "title": "Code-uitleg",
+    "when": "Wanneer je snel wilt begrijpen wat een stuk code doet.",
+    "deliver": ["Eenvoudige uitleg van code", "Voorbeeld van werking"],
+    "inputFields": [
+      { "key": "code", "label": "Plak hier je code", "type": "textarea" }
+    ],
+    "prompt": "Leg in eenvoudige taal uit wat deze code doet:\n\n⟨code⟩\n\nGeef ook een voorbeeld van de werking.",
+    "output": ["Eenvoudige uitleg", "Voorbeeld"],
+    "qc": ["Correct", "Begrijpelijk voor niet-expert"]
+  },
+  {
+    "id": "10-2",
+    "chapter": "10 · Code, Data & Tools",
+    "title": "Bugfix suggesties",
+    "when": "Als je een foutmelding wilt begrijpen en oplossen.",
+    "deliver": ["Analyse foutmelding", "3 mogelijke fixes"],
+    "inputFields": [
+      { "key": "code", "label": "Codefragment", "type": "textarea" },
+      { "key": "error", "label": "Foutmelding", "type": "textarea" }
+    ],
+    "prompt": "Analyseer de foutmelding ⟨error⟩ in deze code:\n\n⟨code⟩\n\nGeef 3 mogelijke oorzaken + fixes.",
+    "output": ["Oorzaak + fix suggesties"],
+    "qc": ["Fixes concreet", "Reproduceerbaar"]
+  },
+  {
+    "id": "10-3",
+    "chapter": "10 · Code, Data & Tools",
+    "title": "Reguliere expressie generator",
+    "when": "Wanneer je snel een regex nodig hebt.",
+    "deliver": ["Reguliere expressie", "Uitleg"],
+    "inputFields": [
+      { "key": "patroon", "label": "Wat wil je matchen?", "type": "text" }
+    ],
+    "prompt": "Genereer een reguliere expressie voor ⟨patroon⟩ en leg uit hoe die werkt.",
+    "output": ["Regex", "Uitleg"],
+    "qc": ["Regex werkt", "Uitleg klopt"]
+  },
+  {
+    "id": "10-4",
+    "chapter": "10 · Code, Data & Tools",
+    "title": "SQL-query’s schrijven",
+    "when": "Als je SQL-queries nodig hebt voor je database.",
+    "deliver": ["SQL-query", "Korte uitleg"],
+    "inputFields": [
+      {
+        "key": "dbstructuur",
+        "label": "Beschrijving database-tabellen",
+        "type": "textarea"
+      },
+      { "key": "vraag", "label": "Wat wil je ophalen?", "type": "text" }
+    ],
+    "prompt": "Schrijf een SQL-query voor deze database:\n⟨dbstructuur⟩\n\nVraag: ⟨vraag⟩",
+    "output": ["SQL-query", "Uitleg"],
+    "qc": ["Syntax correct", "Query levert gevraagde data"]
+  },
+  {
+    "id": "10-5",
+    "chapter": "10 · Code, Data & Tools",
+    "title": "API-aanroep voorbeeld",
+    "when": "Wanneer je wilt leren hoe je een API aanroept.",
+    "deliver": ["Voorbeeldcode in gekozen taal"],
+    "inputFields": [
+      { "key": "endpoint", "label": "API-endpoint", "type": "text" },
+      {
+        "key": "methode",
+        "label": "HTTP-methode (GET/POST/...)",
+        "type": "text"
+      },
+      {
+        "key": "taal",
+        "label": "Taal (JavaScript/Python/etc.)",
+        "type": "text"
+      }
+    ],
+    "prompt": "Maak voorbeeldcode in ⟨taal⟩ voor een ⟨methode⟩ request naar ⟨endpoint⟩.",
+    "output": ["Voorbeeldcode"],
+    "qc": ["Code correct", "Voorbeeld werkt in taal"]
+  },
+  {
+    "id": "11-1",
+    "chapter": "11 · Meta & Promptcraft",
+    "title": "Prompt verbeteren",
+    "when": "Als je niet tevreden bent met een antwoord.",
+    "deliver": ["Verbeterde prompt", "Uitleg waarom beter"],
+    "inputFields": [
+      {
+        "key": "prompt",
+        "label": "Oorspronkelijke prompt",
+        "type": "textarea"
+      },
+      { "key": "probleem", "label": "Wat ging er mis?", "type": "text" }
+    ],
+    "prompt": "Verbeter deze prompt:\n\n⟨prompt⟩\n\nProbleem: ⟨probleem⟩",
+    "output": ["Nieuwe prompt", "Uitleg"],
+    "qc": ["Probleem opgelost", "Prompt duidelijker"]
+  },
+  {
+    "id": "11-2",
+    "chapter": "11 · Meta & Promptcraft",
+    "title": "Prompt-variaties",
+    "when": "Als je meerdere invalshoeken wilt proberen.",
+    "deliver": ["3–5 alternatieve prompts"],
+    "inputFields": [
+      { "key": "prompt", "label": "Originele prompt", "type": "textarea" }
+    ],
+    "prompt": "Maak 5 alternatieve variaties van deze prompt:\n\n⟨prompt⟩",
+    "output": ["Variaties"],
+    "qc": ["Variaties verschillend", "Allemaal bruikbaar"]
+  },
+  {
+    "id": "11-3",
+    "chapter": "11 · Meta & Promptcraft",
+    "title": "Prompt-structuur uitleggen",
+    "when": "Wanneer je wilt leren hoe een prompt werkt.",
+    "deliver": ["Analyse onderdelen", "Tips voor verbetering"],
+    "inputFields": [{ "key": "prompt", "label": "Prompt", "type": "textarea" }],
+    "prompt": "Leg uit hoe deze prompt is opgebouwd:\n\n⟨prompt⟩\n\nGeef daarna 3 tips om hem sterker te maken.",
+    "output": ["Analyse", "Tips"],
+    "qc": ["Analyse correct", "Tips concreet"]
+  },
+  {
+    "id": "11-4",
+    "chapter": "11 · Meta & Promptcraft",
+    "title": "Roleplay prompt",
+    "when": "Als je ChatGPT een specifieke rol wilt geven.",
+    "deliver": ["Roleplay-prompt op maat"],
+    "inputFields": [
+      {
+        "key": "rol",
+        "label": "Rol (coach, docent, advocaat, ...)",
+        "type": "text"
+      },
+      { "key": "context", "label": "Context", "type": "textarea" }
+    ],
+    "prompt": "Schrijf een prompt om ChatGPT de rol van ⟨rol⟩ te laten spelen in deze context:\n\n⟨context⟩",
+    "output": ["Roleplay-prompt"],
+    "qc": ["Rol duidelijk", "Context opgenomen"]
+  },
+  {
+    "id": "11-5",
+    "chapter": "11 · Meta & Promptcraft",
+    "title": "Prompt-bundel",
+    "when": "Als je een set prompts wilt voor 1 use case.",
+    "deliver": ["Set van 5 prompts in volgorde"],
+    "inputFields": [{ "key": "usecase", "label": "Use case", "type": "text" }],
+    "prompt": "Maak een bundel van 5 prompts die samen een workflow vormen rond ⟨usecase⟩.",
+    "output": ["Set van 5 prompts"],
+    "qc": ["Logische volgorde", "Set dekt hele use case"]
   }
 ]
