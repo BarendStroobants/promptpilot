@@ -140,5 +140,283 @@
     "prompt": "Bedenk 5 creatieve slogans voor: ⟨brand⟩",
     "output": ["Slogans"],
     "qc": ["Kort", "Creatief", "Merk passend"]
+  },
+  {
+    "id": "4-1",
+    "chapter": "4 · Onderzoek & Analyse",
+    "title": "Feitencheck",
+    "when": "Wanneer je wilt nagaan of een uitspraak of bron betrouwbaar is.",
+    "deliver": [
+      "Controle of informatie juist is",
+      "Alternatieve bronvermelding"
+    ],
+    "inputFields": [
+      { "key": "claim", "label": "De uitspraak of bron", "type": "textarea" }
+    ],
+    "prompt": "Controleer of de volgende uitspraak correct is en vermeld betrouwbare bronnen:\n\n⟨claim⟩",
+    "output": ["Samenvatting van juistheid", "Bronnenlijst"],
+    "qc": ["Bronnen aanwezig", "Correctheid beoordeeld"]
+  },
+  {
+    "id": "4-2",
+    "chapter": "4 · Onderzoek & Analyse",
+    "title": "Vergelijking",
+    "when": "Als je verschillen en overeenkomsten wilt zien tussen twee concepten.",
+    "deliver": ["Tabel met verschillen en overeenkomsten", "Samenvatting"],
+    "inputFields": [
+      { "key": "a", "label": "Eerste concept", "type": "text" },
+      { "key": "b", "label": "Tweede concept", "type": "text" }
+    ],
+    "prompt": "Vergelijk ⟨a⟩ en ⟨b⟩. Toon verschillen en overeenkomsten in een tabel en sluit af met een korte samenvatting.",
+    "output": ["Vergelijkende tabel", "Samenvatting"],
+    "qc": ["Duidelijke tabel", "Samenvatting neutraal"]
+  },
+  {
+    "id": "4-3",
+    "chapter": "4 · Onderzoek & Analyse",
+    "title": "Statistische uitleg",
+    "when": "Wanneer je complexe cijfers of percentages simpel wilt begrijpen.",
+    "deliver": ["Eenvoudige uitleg", "Voorbeeld"],
+    "inputFields": [
+      { "key": "data", "label": "Statistiek of cijfer", "type": "textarea" }
+    ],
+    "prompt": "Leg de betekenis van ⟨data⟩ uit in eenvoudige taal. Geef een voorbeeld uit de praktijk.",
+    "output": ["Uitleg in gewone taal", "Voorbeeld"],
+    "qc": ["Begrijpelijk", "Concreet voorbeeld aanwezig"]
+  },
+  {
+    "id": "4-4",
+    "chapter": "4 · Onderzoek & Analyse",
+    "title": "Literatuurverwijzing",
+    "when": "Wanneer je bronnen zoekt rond een onderwerp.",
+    "deliver": ["Lijst met literatuur", "Samenvatting per bron"],
+    "inputFields": [{ "key": "topic", "label": "Onderwerp", "type": "text" }],
+    "prompt": "Zoek 3 relevante wetenschappelijke bronnen rond ⟨topic⟩ en geef een korte samenvatting per bron.",
+    "output": ["Lijst met bronnen", "Samenvattingen"],
+    "qc": ["3 bronnen", "Samenvattingen aanwezig"]
+  },
+  {
+    "id": "4-5",
+    "chapter": "4 · Onderzoek & Analyse",
+    "title": "Voor- en nadelenanalyse",
+    "when": "Als je de voor- en nadelen van een keuze wilt zien.",
+    "deliver": ["Lijst met voordelen", "Lijst met nadelen"],
+    "inputFields": [
+      { "key": "topic", "label": "Onderwerp of keuze", "type": "text" }
+    ],
+    "prompt": "Maak een lijst met voor- en nadelen van ⟨topic⟩.",
+    "output": ["Lijst voor- en nadelen"],
+    "qc": ["Beide lijsten gevuld", "Evenwichtige weergave"]
+  },
+  {
+    "id": "5-1",
+    "chapter": "5 · Leren & Uitleg",
+    "title": "Concept uitleggen",
+    "when": "Wanneer je iets moeilijk eenvoudig wilt begrijpen.",
+    "deliver": ["Uitleg in eenvoudige taal"],
+    "inputFields": [
+      { "key": "concept", "label": "Het concept", "type": "text" },
+      {
+        "key": "niveau",
+        "label": "Uitlegniveau (kind, student, expert)",
+        "type": "text"
+      }
+    ],
+    "prompt": "Leg ⟨concept⟩ uit op het niveau van ⟨niveau⟩.",
+    "output": ["Uitleg afgestemd op niveau"],
+    "qc": ["Correct", "Begrijpelijk voor gekozen niveau"]
+  },
+  {
+    "id": "5-2",
+    "chapter": "5 · Leren & Uitleg",
+    "title": "Stap-voor-stap instructie",
+    "when": "Wanneer je praktische instructies wilt maken.",
+    "deliver": ["Duidelijke stappenlijst"],
+    "inputFields": [
+      { "key": "taak", "label": "Taak of handeling", "type": "text" }
+    ],
+    "prompt": "Geef een stap-voor-stap instructie voor: ⟨taak⟩.",
+    "output": ["Stappenlijst"],
+    "qc": ["Alle stappen aanwezig", "Logische volgorde"]
+  },
+  {
+    "id": "5-3",
+    "chapter": "5 · Leren & Uitleg",
+    "title": "Analogie maken",
+    "when": "Als je een metafoor wilt gebruiken om iets uit te leggen.",
+    "deliver": ["Analogie of vergelijking"],
+    "inputFields": [{ "key": "concept", "label": "Concept", "type": "text" }],
+    "prompt": "Leg ⟨concept⟩ uit met een passende analogie of metafoor.",
+    "output": ["Analogie of metafoor"],
+    "qc": ["Beeldend", "Begrijpelijk"]
+  },
+  {
+    "id": "5-4",
+    "chapter": "5 · Leren & Uitleg",
+    "title": "Veelgestelde vragen",
+    "when": "Wanneer je een FAQ wilt opstellen.",
+    "deliver": ["Lijst van vragen met antwoorden"],
+    "inputFields": [{ "key": "topic", "label": "Onderwerp", "type": "text" }],
+    "prompt": "Maak een FAQ met 5 veelgestelde vragen en antwoorden over: ⟨topic⟩.",
+    "output": ["FAQ-lijst"],
+    "qc": ["5 vragen aanwezig", "Antwoorden duidelijk"]
+  },
+  {
+    "id": "5-5",
+    "chapter": "5 · Leren & Uitleg",
+    "title": "Formule uitleggen",
+    "when": "Wanneer je een wiskundige of natuurkundige formule wilt begrijpen.",
+    "deliver": ["Uitleg formule", "Voorbeeldberekening"],
+    "inputFields": [{ "key": "formule", "label": "Formule", "type": "text" }],
+    "prompt": "Leg uit hoe ⟨formule⟩ werkt en geef een voorbeeldberekening.",
+    "output": ["Uitleg", "Voorbeeld"],
+    "qc": ["Correct", "Voorbeeld uitgewerkt"]
+  },
+  {
+    "id": "6-1",
+    "chapter": "6 · Productiviteit & Organisatie",
+    "title": "Dagplanning",
+    "when": "Wanneer je je dag wilt structureren.",
+    "deliver": ["Planning per uur", "Prioriteitenlijst"],
+    "inputFields": [
+      { "key": "taken", "label": "Belangrijkste taken", "type": "textarea" }
+    ],
+    "prompt": "Maak een dagplanning op basis van deze taken: ⟨taken⟩. Verdeel ze per uur en geef de 3 hoogste prioriteiten aan.",
+    "output": ["Dagplanning", "Top 3 prioriteiten"],
+    "qc": ["Alle taken ingepland", "Prioriteiten duidelijk"]
+  },
+  {
+    "id": "6-2",
+    "chapter": "6 · Productiviteit & Organisatie",
+    "title": "Eisen en wensen scheiden",
+    "when": "Als je keuzes moet maken in een project.",
+    "deliver": ["Twee lijsten: eisen en wensen"],
+    "inputFields": [
+      {
+        "key": "lijst",
+        "label": "Lijst met wensen/eisen door elkaar",
+        "type": "textarea"
+      }
+    ],
+    "prompt": "Splits de volgende lijst in harde eisen en zachte wensen:\n\n⟨lijst⟩",
+    "output": ["Lijst eisen", "Lijst wensen"],
+    "qc": ["Goede scheiding", "Geen elementen verloren"]
+  },
+  {
+    "id": "6-3",
+    "chapter": "6 · Productiviteit & Organisatie",
+    "title": "Prioriteitenmatrix",
+    "when": "Als je wilt focussen op wat belangrijk is.",
+    "deliver": ["Matrix belangrijk/urgent"],
+    "inputFields": [
+      { "key": "taken", "label": "Takenlijst", "type": "textarea" }
+    ],
+    "prompt": "Plaats deze taken in een Eisenhower-matrix (Belangrijk/Urgent): ⟨taken⟩.",
+    "output": ["Matrix met 4 kwadranten"],
+    "qc": ["Alle taken ingedeeld", "Matrix correct toegepast"]
+  },
+  {
+    "id": "6-4",
+    "chapter": "6 · Productiviteit & Organisatie",
+    "title": "Projectplan",
+    "when": "Wanneer je start met een project.",
+    "deliver": ["Samenvatting met doelen, stappen en risico’s"],
+    "inputFields": [
+      { "key": "project", "label": "Projectnaam", "type": "text" },
+      { "key": "doelen", "label": "Doelen", "type": "textarea" }
+    ],
+    "prompt": "Maak een kort projectplan voor ⟨project⟩. Beschrijf doelen, stappen en mogelijke risico’s.",
+    "output": ["Projectplan"],
+    "qc": ["Doelen duidelijk", "Risico’s benoemd"]
+  },
+  {
+    "id": "6-5",
+    "chapter": "6 · Productiviteit & Organisatie",
+    "title": "Notulen samenvatten",
+    "when": "Als je snel overzicht wilt na een meeting.",
+    "deliver": ["Samenvatting met beslissingen en acties"],
+    "inputFields": [
+      { "key": "notulen", "label": "Meetingnotities", "type": "textarea" }
+    ],
+    "prompt": "Vat de volgende notulen samen en haal de belangrijkste beslissingen en acties eruit:\n\n⟨notulen⟩",
+    "output": ["Samenvatting", "Lijst acties"],
+    "qc": ["Beslissingen duidelijk", "Acties concreet"]
+  },
+  {
+    "id": "7-1",
+    "chapter": "7 · Persoonlijke Ontwikkeling",
+    "title": "SMART-doelen formuleren",
+    "when": "Wanneer je doelen concreet wilt maken.",
+    "deliver": ["Lijst van SMART-doelen"],
+    "inputFields": [
+      { "key": "doelen", "label": "Doelen in ruwe vorm", "type": "textarea" }
+    ],
+    "prompt": "Herschrijf deze doelen volgens het SMART-model:\n\n⟨doelen⟩",
+    "output": ["SMART-doelen"],
+    "qc": ["Alle criteria (Specifiek, Meetbaar, etc.) aanwezig"]
+  },
+  {
+    "id": "7-2",
+    "chapter": "7 · Persoonlijke Ontwikkeling",
+    "title": "Dagreflectie",
+    "when": "Als je dagelijks wilt leren van je ervaringen.",
+    "deliver": ["Reflectieverslag met 3 inzichten"],
+    "inputFields": [
+      {
+        "key": "ervaringen",
+        "label": "Wat gebeurde er vandaag?",
+        "type": "textarea"
+      }
+    ],
+    "prompt": "Schrijf een dagreflectie over ⟨ervaringen⟩. Voeg 3 inzichten of lessen toe.",
+    "output": ["Reflectie met lessen"],
+    "qc": ["Persoonlijk", "Concrete inzichten"]
+  },
+  {
+    "id": "7-3",
+    "chapter": "7 · Persoonlijke Ontwikkeling",
+    "title": "Sterktes in kaart brengen",
+    "when": "Wanneer je je sterke punten wilt ontdekken.",
+    "deliver": ["Overzicht sterke punten"],
+    "inputFields": [
+      {
+        "key": "ervaringen",
+        "label": "Voorbeelden van successen",
+        "type": "textarea"
+      }
+    ],
+    "prompt": "Analyseer ⟨ervaringen⟩ en beschrijf de onderliggende sterke punten.",
+    "output": ["Lijst sterke punten"],
+    "qc": ["Sterktes concreet", "Gebaseerd op voorbeelden"]
+  },
+  {
+    "id": "7-4",
+    "chapter": "7 · Persoonlijke Ontwikkeling",
+    "title": "Belemmerende overtuigingen",
+    "when": "Als je patronen wilt doorbreken.",
+    "deliver": ["Lijst overtuigingen en alternatieve gedachten"],
+    "inputFields": [
+      {
+        "key": "overtuigingen",
+        "label": "Jouw overtuigingen",
+        "type": "textarea"
+      }
+    ],
+    "prompt": "Identificeer de belemmerende overtuigingen in ⟨overtuigingen⟩ en formuleer helpende alternatieven.",
+    "output": ["Lijst belemmerende overtuigingen", "Alternatieven"],
+    "qc": ["Beide lijsten aanwezig", "Alternatieven positief geformuleerd"]
+  },
+  {
+    "id": "7-5",
+    "chapter": "7 · Persoonlijke Ontwikkeling",
+    "title": "Leefregels opstellen",
+    "when": "Als je richtlijnen voor jezelf wilt creëren.",
+    "deliver": ["Set van persoonlijke leefregels"],
+    "inputFields": [
+      { "key": "waarden", "label": "Belangrijke waarden", "type": "textarea" }
+    ],
+    "prompt": "Maak leefregels die passen bij deze waarden: ⟨waarden⟩.",
+    "output": ["Lijst leefregels"],
+    "qc": ["Leefregels passen bij waarden", "Helder en uitvoerbaar"]
   }
 ]
