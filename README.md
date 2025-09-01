@@ -1,38 +1,19 @@
-# PromptPilot – Power Prompts Handbook
+# PromptPilot 🚀
 
-Een open-source mini-app om beter met ChatGPT samen te werken.
-Kies een template, vul je context in en kopieer een perfect geformatteerde prompt.
+Handboek om slim samen te werken met ChatGPT – met 60+ praktische prompt-sjablonen.
 
-## Live
+[![Live](https://img.shields.io/badge/Live-PromptPilot-4c1)](https://barendstroobants.github.io/promptpilot/)
 
-- GitHub Pages: (komt hierna) https://<jouw-username>.github.io/promptpilot/
-
-## Live site
-
-[![GitHub Pages](https://img.shields.io/badge/Live-PromptPilot-4c1)](https://BarendStroobants.github.io/promptpilot/)
+👉 **Live versie**: https://barendstroobants.github.io/promptpilot/
 
 ## Features
+- 📚 60+ prompts, gestructureerd per hoofdstuk
+- 🔍 Zoekfunctie per titel, hoofdstuk of woord
+- 📤 Export naar Markdown
+- 🎨 Eenvoudige en heldere UI
 
-- Catalogus met hoofdstukken (60 templates)
-- Form builder → ingevulde prompt
-- 1-klik Copy
-- Export naar Markdown
-- LocalStorage (laatste sessie)
-- 100% client-side (HTML/CSS/JS)
-
-## Ontwikkelen
-
-1. Open `index.html` in je browser (of zet GitHub Pages aan)
-2. Pas `index.html` aan (of verplaats templates naar `data/templates.json`)
-3. PR’s welkom!
-
-## Roadmap
-
-- Donkere modus
-- NL/EN UI-switch
-- Favorieten + delen via URL
-- PWA (offline)
-
-## Live site
-https://BarendStroobants.github.io/promptpilot/
-
+## Ontwikkeling
+```bash
+git clone git@github.com:BarendStroobants/promptpilot.git
+cd promptpilot
+# open index.html in je browser of gebruik een lokale server
