@@ -9,7 +9,11 @@ const $results = document.getElementById("results");
 
 document.addEventListener("DOMContentLoaded", async () => {
   try {
-    const res = await fetch("data/templates.json", { cache: "no-store" });
+    const version = "v2"; // of bump bij nieuwe update: v3, v4...
+    const res = await fetch(`data/templates.json?${version}`, {
+      cache: "no-store",
+    });
+
     templates = await res.json();
     initFilters();
   } catch (e) {
