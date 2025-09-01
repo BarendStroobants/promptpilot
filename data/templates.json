@@ -15,7 +15,7 @@
       { "key": "factoren", "label": "Factoren", "type": "textarea" },
       { "key": "focus", "label": "Focus", "type": "text" }
     ],
-    "prompt": "Maak een scenariovergelijking voor ⟨besluit/plan⟩.\nTijdshorizon: ⟨…⟩\nFactoren: ⟨…⟩\nFocus: ⟨…⟩\n\nLever:\n1) Optimistisch scenario\n2) Realistisch scenario\n3) Pessimistisch scenario\n+ Tabel: scenario | kernimpact | risico’s | kansen",
+    "prompt": "Maak een scenariovergelijking voor ⟨besluit/plan⟩.\nTijdshorizon: ⟨…⟩\nFactoren: ⟨…⟩\nFocus: ⟨…⟩\n\nLever:\n1) Optimistisch scenario\n2) Realistisch scenario\n3) Pessimistisch scenario\n+ Tabel met scenario | kernimpact | risico's | kansen",
     "output": ["3 scenario's in tekstvorm", "Vergelijkende tabel"],
     "qc": [
       "Scenario's duidelijk verschillend",
@@ -49,5 +49,96 @@
       "Criteria correct toegepast",
       "Volgorde logisch"
     ]
+  },
+  {
+    "id": "1-3",
+    "chapter": "1 · Strategie",
+    "title": "SWOT-analyse",
+    "when": "Als je de sterktes, zwaktes, kansen en bedreigingen van een project of bedrijf wilt in kaart brengen.",
+    "deliver": [
+      "Overzicht in 4 categorieën",
+      "Samenvatting van belangrijkste punten"
+    ],
+    "inputFields": [
+      { "key": "project", "label": "Project/onderwerp", "type": "text" }
+    ],
+    "prompt": "Maak een SWOT-analyse voor ⟨project⟩. Geef sterktes, zwaktes, kansen en bedreigingen in een overzichtelijke tabel.",
+    "output": ["SWOT-tabel", "Samenvatting"],
+    "qc": ["Alle 4 kwadranten gevuld", "Concreet en toepasbaar"]
+  },
+  {
+    "id": "2-1",
+    "chapter": "2 · Schrijven & Redactie",
+    "title": "Samenvatting",
+    "when": "Wanneer je lange teksten snel wilt verkorten.",
+    "deliver": ["Korte, duidelijke samenvatting"],
+    "inputFields": [
+      { "key": "text", "label": "Plak hier je tekst", "type": "textarea" }
+    ],
+    "prompt": "Vat onderstaande tekst kort samen:\n\n⟨text⟩",
+    "output": ["Samenvatting (100–150 woorden)"],
+    "qc": ["Essentie behouden", "Geen details verloren"]
+  },
+  {
+    "id": "2-2",
+    "chapter": "2 · Schrijven & Redactie",
+    "title": "Tone-of-voice herschrijven",
+    "when": "Als je dezelfde tekst in een andere stijl nodig hebt.",
+    "deliver": ["Nieuwe versie in gekozen tone-of-voice"],
+    "inputFields": [
+      { "key": "text", "label": "Originele tekst", "type": "textarea" },
+      { "key": "tone", "label": "Gewenste tone-of-voice", "type": "text" }
+    ],
+    "prompt": "Herschrijf onderstaande tekst in de stijl van ⟨tone⟩:\n\n⟨text⟩",
+    "output": ["Herschreven tekst"],
+    "qc": ["Nieuwe stijl voelbaar", "Inhoud correct behouden"]
+  },
+  {
+    "id": "2-3",
+    "chapter": "2 · Schrijven & Redactie",
+    "title": "Feedback geven",
+    "when": "Als je wilt weten hoe een tekst beter kan.",
+    "deliver": ["Sterktes en verbeterpunten"],
+    "inputFields": [{ "key": "text", "label": "Tekst", "type": "textarea" }],
+    "prompt": "Geef feedback op onderstaande tekst. Beschrijf sterke punten en verbeterpunten.\n\n⟨text⟩",
+    "output": ["Feedback in bullets"],
+    "qc": ["Sterktes benoemd", "Concrete verbeterpunten"]
+  },
+  {
+    "id": "3-1",
+    "chapter": "3 · Creativiteit & Brainstorm",
+    "title": "Ideeën genereren",
+    "when": "Wanneer je nieuwe invalshoeken zoekt.",
+    "deliver": ["10 creatieve ideeën"],
+    "inputFields": [{ "key": "topic", "label": "Onderwerp", "type": "text" }],
+    "prompt": "Geef 10 creatieve ideeën rond ⟨topic⟩.",
+    "output": ["Lijst met ideeën"],
+    "qc": ["Variatie", "Originaliteit"]
+  },
+  {
+    "id": "3-2",
+    "chapter": "3 · Creativiteit & Brainstorm",
+    "title": "Alternatieve titels",
+    "when": "Als je pakkende titels nodig hebt.",
+    "deliver": ["5–10 alternatieve titels"],
+    "inputFields": [
+      { "key": "text", "label": "Originele titel/onderwerp", "type": "text" }
+    ],
+    "prompt": "Bedenk 10 alternatieve titels voor: ⟨text⟩",
+    "output": ["Titellijst"],
+    "qc": ["Creatief", "Relevantie behouden"]
+  },
+  {
+    "id": "3-3",
+    "chapter": "3 · Creativiteit & Brainstorm",
+    "title": "Slogans",
+    "when": "Als je korte slogans nodig hebt.",
+    "deliver": ["5 slogans"],
+    "inputFields": [
+      { "key": "brand", "label": "Merk/onderwerp", "type": "text" }
+    ],
+    "prompt": "Bedenk 5 creatieve slogans voor: ⟨brand⟩",
+    "output": ["Slogans"],
+    "qc": ["Kort", "Creatief", "Merk passend"]
   }
 ]
