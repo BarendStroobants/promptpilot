@@ -8,44 +8,42 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header>
-      <div class="wrap">
-        <div class="brand">
-          <span class="logo"></span>
-          <div>
-            <h1>PromptPilot</h1>
-            <div class="sub">
-              Handbook to team up with ChatGPT · 60 templates
-            </div>
-          </div>
-        </div>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href="#">
+          <span class="logo">✨</span>
+          <span class="title">PromptPilot</span>
+          <span class="sub">Power Prompts Handbook</span>
+        </a>
 
-        <div class="toolbar">
+        <div class="toolbar" role="toolbar" aria-label="Hoofdacties">
           <input
             id="q"
             type="search"
             placeholder="Zoek op titel, hoofdstuk of woorden…"
+            aria-label="Zoeken"
           />
-          <select id="chapterFilter"></select>
-          <button id="exportMd">Export naar Markdown</button>
-          <button id="reset">Reset sessie</button>
-          <!-- Theme toggle geparkeerd
-          <button id="themeToggle" title="Schakel thema">🌙</button>
-          -->
+
+          <select id="chapterFilter" aria-label="Filter op hoofdstuk"></select>
+
+          <div class="btns">
+            <button id="exportMD" class="btn">Export naar Markdown</button>
+            <button id="reset" class="btn btn-ghost">Reset sessie</button>
+            <button
+              id="themeToggle"
+              class="btn"
+              aria-label="Schakel thema"
+              title="Schakel thema (T)"
+            >
+              🌓
+            </button>
+          </div>
         </div>
       </div>
     </header>
 
-    <main class="wrap">
-      <aside class="side"><div id="chaptersList"></div></aside>
-      <section class="content">
-        <div id="results"></div>
-        <div class="footer">
-          Tip: vul de velden onder “Jouw input” en klik dan op
-          <b>Genereer prompt</b> of <b>Kopieer prompt</b>. Je keuzes worden
-          lokaal opgeslagen.
-        </div>
-      </section>
+    <main class="layout wrap" id="main">
+      <section id="view" class="content" aria-live="polite"></section>
     </main>
 
     <script src="app.js"></script>
