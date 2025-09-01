@@ -285,3 +285,36 @@ html[data-theme="dark"] {
 #themeToggle {
   min-width: 40px;
 }
+
+/* --- Theme reset to LIGHT (toggle geparkeerd) --- */
+:root {
+  --accent: #6a1b9a;
+  --bg: #faf8fc;
+  --ink: #1f1f1f;
+  --muted: #6b6b6b;
+  --card: #ffffff;
+  --soft: #eee;
+  --code: #f3f3f3;
+  --radius: 14px;
+}
+
+/* Zorg dat codeblokken niet donker achterblijven */
+.code {
+  background: var(--code);
+  color: var(--ink);
+  border: 1px solid #e5e5e5;
+}
+
+/* Optioneel: als je eerder donkere kleuren op .content/.side had gezet, zet ze terug: */
+.content,
+.side {
+  background: var(--card);
+  border: 1px solid #ece7f2;
+}
+
+/* Optioneel: als je pills/dropshadows donker had, zet ze terug: */
+.pill {
+  color: #5a2b7a;
+  background: #f4e9fb;
+  border: 1px solid #ead9f8;
+}

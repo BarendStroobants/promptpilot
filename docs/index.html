@@ -1,9 +1,15 @@
 <!DOCTYPE html>
-<html lang="nl" data-theme="dark">
+<html lang="nl">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>PromptPilot – Power Prompts Handbook</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect rx='14' width='64' height='64' fill='%236a1b9a'/%3E%3Ctext x='50%25' y='52%25' text-anchor='middle' font-size='36' font-family='Inter,Arial,sans-serif' fill='white'%3EP%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -28,8 +34,9 @@
           <select id="chapterFilter"></select>
           <button id="exportMd">Export naar Markdown</button>
           <button id="reset">Reset sessie</button>
-          <!-- 🌗 Toggle -->
+          <!-- Theme toggle geparkeerd
           <button id="themeToggle" title="Schakel thema">🌙</button>
+          -->
         </div>
       </div>
     </header>
@@ -47,25 +54,9 @@
     </main>
 
     <script src="app.js"></script>
-    <script>
-      // Theme toggle (bewaar keuze)
-      const root = document.documentElement;
-      const btn = document.getElementById("themeToggle");
 
-      function setTheme(mode) {
-        root.dataset.theme = mode;
-        btn.textContent = mode === "dark" ? "☀️" : "🌙";
-        localStorage.setItem("pp-theme", mode);
-      }
-
-      // Init vanuit localStorage of default
-      setTheme(
-        localStorage.getItem("pp-theme") || root.dataset.theme || "light"
-      );
-
-      btn.addEventListener("click", () => {
-        setTheme(root.dataset.theme === "dark" ? "light" : "dark");
-      });
-    </script>
+    <!-- Inline theme-script volledig uitschakelen
+    <script> … was hier … </script>
+    -->
   </body>
 </html>
