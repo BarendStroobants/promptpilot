@@ -3,294 +3,1001 @@
     "id": "1-1",
     "chapter": "1 · Strategie",
     "title": "Scenariovergelijking",
-    "when": "Als je verschillende mogelijke toekomsten wilt verkennen en de implicaties per scenario wilt begrijpen.",
+    "when": "Als je verschillende mogelijke toekomsten wilt verkennen en implicaties per scenario wilt begrijpen.",
     "deliver": [
-      "3 scenario's (optimistisch, realistisch, pessimistisch)",
+      "3 scenario’s (optimistisch, realistisch, pessimistisch)",
       "Kernimpact per scenario",
       "Vergelijkende tabel"
     ],
     "inputFields": [
-      { "key": "besluit", "label": "Besluit/plan", "type": "text" },
-      { "key": "horizon", "label": "Tijdshorizon", "type": "text" },
-      { "key": "factoren", "label": "Factoren", "type": "textarea" },
-      { "key": "focus", "label": "Focus", "type": "text" }
+      {
+        "key": "besluit",
+        "label": "Besluit/plan",
+        "type": "text"
+      },
+      {
+        "key": "horizon",
+        "label": "Tijdshorizon",
+        "type": "text"
+      },
+      {
+        "key": "factoren",
+        "label": "Belangrijke factoren",
+        "type": "textarea"
+      },
+      {
+        "key": "focus",
+        "label": "Strategische focus",
+        "type": "text"
+      }
     ],
-    "prompt": "Maak een scenariovergelijking voor ⟨besluit/plan⟩.\nTijdshorizon: ⟨…⟩\nFactoren: ⟨…⟩\nFocus: ⟨…⟩\n\nLever:\n1) Optimistisch scenario\n2) Realistisch scenario\n3) Pessimistisch scenario\n+ Tabel met scenario | kernimpact | risico's | kansen",
-    "output": ["3 scenario's in tekstvorm", "Vergelijkende tabel"],
+    "prompt": "Maak een scenariovergelijking voor ⟨besluit⟩.\nTijdshorizon: ⟨horizon⟩\nFactoren: ⟨factoren⟩\nFocus: ⟨focus⟩\n\nLever: 1) Optimistisch 2) Realistisch 3) Pessimistisch, met kernimpact en signalen om te monitoren.",
+    "output": [
+      "3 scenario’s in tekstvorm",
+      "Vergelijkende tabel"
+    ],
     "qc": [
-      "Scenario's duidelijk verschillend",
-      "Impact concreet",
-      "Risico's én kansen benoemd"
+      "Scenario’s duidelijk onderscheidend",
+      "Impact en onzekerheden benoemd",
+      "Signalen/leading indicators aanwezig"
     ]
   },
   {
     "id": "1-2",
     "chapter": "1 · Strategie",
-    "title": "Impact/Effort-matrix",
-    "when": "Om prioriteiten te stellen tussen ideeën of projecten.",
+    "title": "Beslismatrix (weighted)",
+    "when": "Wanneer je meerdere opties objectief wilt afwegen op criteria.",
     "deliver": [
-      "Indeling 6–10 items in 4 kwadranten",
-      "Aanbevolen volgorde van aanpak"
+      "Tabel: opties × criteria met weging",
+      "Score per optie",
+      "Aanbeveling + gevoeligheid"
     ],
     "inputFields": [
-      { "key": "items", "label": "Items (lijst)", "type": "textarea" },
-      { "key": "impact", "label": "Impact-criteria", "type": "text" },
-      { "key": "effort", "label": "Effort-criteria", "type": "text" },
       {
-        "key": "context",
-        "label": "Context (strategie, product, marketing, intern…)",
-        "type": "text"
+        "key": "opties",
+        "label": "Opties",
+        "type": "textarea"
+      },
+      {
+        "key": "criteria",
+        "label": "Criteria (met korte definities)",
+        "type": "textarea"
+      },
+      {
+        "key": "weging",
+        "label": "Weging per criterium (100% totaal)",
+        "type": "textarea"
       }
     ],
-    "prompt": "Maak een Impact/Effort-matrix voor ⟨items⟩.\nImpact-criteria: ⟨…⟩\nEffort-criteria: ⟨…⟩\nContext: ⟨…⟩\n\nLever:\n- Matrix met 4 kwadranten\n- Lijst items per kwadrant\n- Aanbevolen volgorde",
-    "output": ["Matrix + lijst", "Aanbevolen volgorde"],
+    "prompt": "Maak een gewogen beslismatrix.\nOpties: ⟨opties⟩\nCriteria: ⟨criteria⟩\nWeging: ⟨weging⟩\n\nBereken scores per optie, motiveer de aanbeveling en geef 1 gevoeligheidsanalyse (welk criterium beïnvloedt de uitkomst het meest).",
+    "output": [
+      "Beslismatrix met totaalscores",
+      "Aanbeveling + gevoeligheid"
+    ],
     "qc": [
-      "Items verdeeld over meerdere kwadranten",
-      "Criteria correct toegepast",
-      "Volgorde logisch"
+      "Som weging = 100%",
+      "Criteria scherp geformuleerd",
+      "Aanbeveling volgt uit data"
     ]
   },
   {
     "id": "1-3",
     "chapter": "1 · Strategie",
-    "title": "SWOT-analyse",
-    "when": "Als je de sterktes, zwaktes, kansen en bedreigingen van een project of bedrijf wilt in kaart brengen.",
+    "title": "KPI-tree & metrics",
+    "when": "Als je doelen wilt vertalen naar meetbare indicatoren.",
     "deliver": [
-      "Overzicht in 4 categorieën",
-      "Samenvatting van belangrijkste punten"
+      "KPI-tree (doel → driver → metric)",
+      "Meetdefinities",
+      "Meetfrequentie & eigenaar"
     ],
     "inputFields": [
-      { "key": "project", "label": "Project/onderwerp", "type": "text" }
+      {
+        "key": "doel",
+        "label": "Hoofddoel",
+        "type": "text"
+      },
+      {
+        "key": "drivers",
+        "label": "Belangrijkste drivers",
+        "type": "textarea"
+      },
+      {
+        "key": "data",
+        "label": "Beschikbare data/bron",
+        "type": "textarea"
+      }
     ],
-    "prompt": "Maak een SWOT-analyse voor ⟨project⟩. Geef sterktes, zwaktes, kansen en bedreigingen in een overzichtelijke tabel.",
-    "output": ["SWOT-tabel", "Samenvatting"],
-    "qc": ["Alle 4 kwadranten gevuld", "Concreet en toepasbaar"]
+    "prompt": "Ontwerp een KPI-tree voor ⟨doel⟩.\nDrivers: ⟨drivers⟩\nDatabronnen: ⟨data⟩\n\nLever per KPI: definitie, formule, frequentie, norm/doelwaarde, eigenaar.",
+    "output": [
+      "KPI-tree",
+      "Meetdefinities per KPI"
+    ],
+    "qc": [
+      "Formules kloppen",
+      "Frequentie realistisch",
+      "Eigenaren toegekend"
+    ]
+  },
+  {
+    "id": "1-4",
+    "chapter": "1 · Strategie",
+    "title": "Risicoanalyse (RAID)",
+    "when": "Wanneer je risico’s en afhankelijkheden wilt beheersen.",
+    "deliver": [
+      "RAID-log (Risks, Assumptions, Issues, Dependencies)",
+      "Mitigaties & triggers",
+      "Heatmap (kans × impact)"
+    ],
+    "inputFields": [
+      {
+        "key": "context",
+        "label": "Context/project",
+        "type": "text"
+      },
+      {
+        "key": "items",
+        "label": "Bekende risico’s/afh. (optioneel)",
+        "type": "textarea"
+      }
+    ],
+    "prompt": "Maak een RAID-overzicht voor ⟨context⟩.\nStartitems: ⟨items⟩\n\nLever: lijst per categorie met kans/impact, trigger-signalen, eigenaar en voorgestelde mitigatie.",
+    "output": [
+      "RAID-log",
+      "Heatmap-notities"
+    ],
+    "qc": [
+      "Kans/impact consistent",
+      "Mitigaties concreet",
+      "Eigenaarschap duidelijk"
+    ]
+  },
+  {
+    "id": "1-5",
+    "chapter": "1 · Strategie",
+    "title": "Roadmap per kwartaal (4Q)",
+    "when": "Als je op hoofdlijnen wilt plannen.",
+    "deliver": [
+      "Kwartaalroadmap (4 blokken)",
+      "Deliverables per kwartaal",
+      "Afhankelijkheden"
+    ],
+    "inputFields": [
+      {
+        "key": "doel",
+        "label": "Strategisch doel",
+        "type": "text"
+      },
+      {
+        "key": "streams",
+        "label": "Werkstromen",
+        "type": "textarea"
+      },
+      {
+        "key": "constraints",
+        "label": "Beperkingen",
+        "type": "textarea"
+      }
+    ],
+    "prompt": "Maak een roadmap voor 4 kwartalen richting ⟨doel⟩.\nWerkstromen: ⟨streams⟩\nConstraints: ⟨constraints⟩\n\nPer kwartaal: deliverables, afhankelijkheden en succescriteria.",
+    "output": [
+      "Q1–Q4 roadmap",
+      "Deliverables + afhankelijkheden"
+    ],
+    "qc": [
+      "Realistische fasering",
+      "Heldere succescriteria",
+      "Geen oversubscriptie"
+    ]
+  },
+  {
+    "id": "1-6",
+    "chapter": "1 · Strategie",
+    "title": "OKR-set (bedrijf/afdeling)",
+    "when": "Wanneer je doelen en resultaten wilt alignen.",
+    "deliver": [
+      "3–5 Objectives",
+      "2–4 Key Results per Objective",
+      "Initiatieven per KR"
+    ],
+    "inputFields": [
+      {
+        "key": "scope",
+        "label": "Scope (bedrijf/afdeling/team)",
+        "type": "text"
+      },
+      {
+        "key": "horizon",
+        "label": "Periode (bijv. Q1 2026)",
+        "type": "text"
+      },
+      {
+        "key": "prioriteiten",
+        "label": "Strategische prioriteiten",
+        "type": "textarea"
+      }
+    ],
+    "prompt": "Stel een OKR-set op voor ⟨scope⟩ in ⟨horizon⟩.\nPrioriteiten: ⟨prioriteiten⟩\n\nPer Objective: 2–4 meetbare KRs met nulmeting en target; noem 1–2 initiatieven per KR.",
+    "output": [
+      "OKR-overzicht",
+      "Initiatievenlijst"
+    ],
+    "qc": [
+      "KRs meetbaar en tijdgebonden",
+      "Initiatieven logisch vs KR",
+      "Scope & periode duidelijk"
+    ]
+  },
+  {
+    "id": "1-7",
+    "chapter": "1 · Strategie",
+    "title": "Stakeholderanalyse & RACI",
+    "when": "Als je rollen en betrokkenheid wilt verduidelijken.",
+    "deliver": [
+      "Stakeholderkaart (macht/belang)",
+      "RACI-matrix",
+      "Communicatieplan"
+    ],
+    "inputFields": [
+      {
+        "key": "project",
+        "label": "Project/onderwerp",
+        "type": "text"
+      },
+      {
+        "key": "stakeholders",
+        "label": "Stakeholders (lijst)",
+        "type": "textarea"
+      }
+    ],
+    "prompt": "Maak een stakeholderanalyse voor ⟨project⟩.\nStakeholders: ⟨stakeholders⟩\n\nLever: kaart (macht vs. interesse), RACI per deliverable en kort communicatieplan (kanaal/frequentie/boodschap).",
+    "output": [
+      "Stakeholderkaart",
+      "RACI",
+      "Communicatieplan"
+    ],
+    "qc": [
+      "Rollen niet dubbel",
+      "Frequenties haalbaar",
+      "Belangrijke stakeholders gedekt"
+    ]
+  },
+  {
+    "id": "1-8",
+    "chapter": "1 · Strategie",
+    "title": "Procesherontwerp (SIPOC)",
+    "when": "Als een proces eenvoudiger of schaalbaarder moet.",
+    "deliver": [
+      "SIPOC-diagram",
+      "Knopen & bottlenecks",
+      "Verbeter-experimenten"
+    ],
+    "inputFields": [
+      {
+        "key": "proces",
+        "label": "Procesnaam",
+        "type": "text"
+      },
+      {
+        "key": "stappen",
+        "label": "Huidige stappen (kort)",
+        "type": "textarea"
+      },
+      {
+        "key": "pijn",
+        "label": "Pijnpunten/knelpunten",
+        "type": "textarea"
+      }
+    ],
+    "prompt": "Maak een SIPOC voor ⟨proces⟩.\nStappen: ⟨stappen⟩\nPijnpunten: ⟨pijn⟩\n\nStel 3 verbeter-experimenten voor met hypothese, impact, effort en meetwijze.",
+    "output": [
+      "SIPOC",
+      "Verbeter-experimenten"
+    ],
+    "qc": [
+      "Experimentschaal klein",
+      "Meetbaar resultaat",
+      "Pijnpunten echt geraakt"
+    ]
+  },
+  {
+    "id": "1-9",
+    "chapter": "1 · Strategie",
+    "title": "Operationeel draaiboek (SLA)",
+    "when": "Als je uitvoering en escalaties wilt vastleggen.",
+    "deliver": [
+      "Proces-checklist",
+      "SLA’s & SLO’s",
+      "Escalatiepad"
+    ],
+    "inputFields": [
+      {
+        "key": "dienst",
+        "label": "Dienst/proces",
+        "type": "text"
+      },
+      {
+        "key": "kpi",
+        "label": "Kern-KPI’s/SLO’s",
+        "type": "textarea"
+      }
+    ],
+    "prompt": "Maak een beknopt draaiboek voor ⟨dienst⟩ met processtappen, SLA/SLO-definities, monitoring en escalatiepad (wie, wanneer, hoe).",
+    "output": [
+      "Draaiboek",
+      "Escalatiepad"
+    ],
+    "qc": [
+      "SLA’s realistisch",
+      "Contactpunten duidelijk",
+      "Monitoring beschreven"
+    ]
+  },
+  {
+    "id": "1-10",
+    "chapter": "1 · Strategie",
+    "title": "Executive 1‑pager voor besluit",
+    "when": "Wanneer je snel een besluit wilt voorbereiden.",
+    "deliver": [
+      "Context & probleem",
+      "3 opties + risico’s",
+      "Aanbeveling + next steps"
+    ],
+    "inputFields": [
+      {
+        "key": "onderwerp",
+        "label": "Onderwerp",
+        "type": "text"
+      },
+      {
+        "key": "opties",
+        "label": "Opties (3)",
+        "type": "textarea"
+      },
+      {
+        "key": "criteria",
+        "label": "Criteria (kort)",
+        "type": "textarea"
+      }
+    ],
+    "prompt": "Schrijf een executive 1‑pager voor ⟨onderwerp⟩ met 3 opties tegen de criteria ⟨criteria⟩, risico’s per optie, aanbeveling en 3 concrete next steps.",
+    "output": [
+      "1‑pager",
+      "Aanbeveling + stappen"
+    ],
+    "qc": [
+      "Neutraal samengevat",
+      "Aanbeveling beargumenteerd",
+      "Stappen uitvoerbaar"
+    ]
   },
   {
     "id": "2-1",
     "chapter": "2 · Schrijven & Redactie",
-    "title": "Samenvatting",
-    "when": "Wanneer je lange teksten snel wilt verkorten.",
-    "deliver": ["Korte, duidelijke samenvatting"],
-    "inputFields": [
-      { "key": "text", "label": "Plak hier je tekst", "type": "textarea" }
+    "title": "Tone-of-voice transformatie",
+    "when": "Als je dezelfde boodschap in een andere stijl wilt.",
+    "deliver": [
+      "3 stijlen (formeel, menselijk, overtuigend)",
+      "Korte toelichting per stijl"
     ],
-    "prompt": "Vat onderstaande tekst kort samen:\n\n⟨text⟩",
-    "output": ["Samenvatting (100–150 woorden)"],
-    "qc": ["Essentie behouden", "Geen details verloren"]
+    "inputFields": [
+      {
+        "key": "tekst",
+        "label": "Brontekst",
+        "type": "textarea"
+      },
+      {
+        "key": "publiek",
+        "label": "Doelpubliek",
+        "type": "text"
+      }
+    ],
+    "prompt": "Herschrijf ⟨tekst⟩ voor ⟨publiek⟩ in 3 stijlen: formeel, menselijk en overtuigend. Benoem per stijl 1 keuze en waarom.",
+    "output": [
+      "3 varianten",
+      "Toelichting per stijl"
+    ],
+    "qc": [
+      "Betekenis behouden",
+      "Stijlverschil duidelijk"
+    ]
   },
   {
     "id": "2-2",
     "chapter": "2 · Schrijven & Redactie",
-    "title": "Tone-of-voice herschrijven",
-    "when": "Als je dezelfde tekst in een andere stijl nodig hebt.",
-    "deliver": ["Nieuwe versie in gekozen tone-of-voice"],
-    "inputFields": [
-      { "key": "text", "label": "Originele tekst", "type": "textarea" },
-      { "key": "tone", "label": "Gewenste tone-of-voice", "type": "text" }
+    "title": "Samenvatten naar bullets",
+    "when": "Wanneer je snel overzicht wilt uit lange tekst.",
+    "deliver": [
+      "Bullets 5–8 punten",
+      "Kernboodschap + acties"
     ],
-    "prompt": "Herschrijf onderstaande tekst in de stijl van ⟨tone⟩:\n\n⟨text⟩",
-    "output": ["Herschreven tekst"],
-    "qc": ["Nieuwe stijl voelbaar", "Inhoud correct behouden"]
+    "inputFields": [
+      {
+        "key": "tekst",
+        "label": "Brontekst",
+        "type": "textarea"
+      },
+      {
+        "key": "max",
+        "label": "Max # bullets (5–10)",
+        "type": "text"
+      }
+    ],
+    "prompt": "Vat ⟨tekst⟩ samen in maximaal ⟨max⟩ bullets. Sluit af met 1 kernboodschap en 2 concrete acties.",
+    "output": [
+      "Bullets + kern",
+      "Acties"
+    ],
+    "qc": [
+      "Geen details verloren",
+      "Acties haalbaar"
+    ]
   },
   {
     "id": "2-3",
     "chapter": "2 · Schrijven & Redactie",
-    "title": "Feedback geven",
-    "when": "Als je wilt weten hoe een tekst beter kan.",
-    "deliver": ["Sterktes en verbeterpunten"],
-    "inputFields": [{ "key": "text", "label": "Tekst", "type": "textarea" }],
-    "prompt": "Geef feedback op onderstaande tekst. Beschrijf sterke punten en verbeterpunten.\n\n⟨text⟩",
-    "output": ["Feedback in bullets"],
-    "qc": ["Sterktes benoemd", "Concrete verbeterpunten"]
+    "title": "Redigeren op B1‑niveau",
+    "when": "Als je tekst toegankelijker wilt maken.",
+    "deliver": [
+      "B1‑versie",
+      "Lijst vereenvoudigingen"
+    ],
+    "inputFields": [
+      {
+        "key": "tekst",
+        "label": "Brontekst",
+        "type": "textarea"
+      }
+    ],
+    "prompt": "Herschrijf ⟨tekst⟩ naar B1‑niveau. Vermijd jargon, maak zinnen korter en voeg kopjes toe waar nuttig. Licht de 5 grootste vereenvoudigingen toe.",
+    "output": [
+      "B1‑tekst",
+      "Top 5 vereenvoudigingen"
+    ],
+    "qc": [
+      "Leesbaar (B1)",
+      "Betekenis behouden"
+    ]
+  },
+  {
+    "id": "2-4",
+    "chapter": "2 · Schrijven & Redactie",
+    "title": "Titels & hooks",
+    "when": "Wanneer je aantrekkelijke koppen nodig hebt.",
+    "deliver": [
+      "10 titelvarianten",
+      "Korte uitleg per variant"
+    ],
+    "inputFields": [
+      {
+        "key": "onderwerp",
+        "label": "Onderwerp/haakje",
+        "type": "text"
+      },
+      {
+        "key": "tone",
+        "label": "Tone (nieuws/educatief/speels)",
+        "type": "text"
+      }
+    ],
+    "prompt": "Genereer 10 titels/hooks voor ⟨onderwerp⟩ in ⟨tone⟩ toon. Geef per titel 1 regel waarom die werkt.",
+    "output": [
+      "10 titels",
+      "Uitleg per titel"
+    ],
+    "qc": [
+      "Variatie aanwezig",
+      "Geen clickbait"
+    ]
+  },
+  {
+    "id": "2-5",
+    "chapter": "2 · Schrijven & Redactie",
+    "title": "CTA verbeteren",
+    "when": "Als je oproepen tot actie sterker wilt maken.",
+    "deliver": [
+      "3 CTA‑opties",
+      "Microcopy en plaatsing"
+    ],
+    "inputFields": [
+      {
+        "key": "context",
+        "label": "Pagina/context",
+        "type": "text"
+      },
+      {
+        "key": "doel",
+        "label": "Doel (inschrijven/delen/kopen)",
+        "type": "text"
+      }
+    ],
+    "prompt": "Verbeter CTA’s voor ⟨context⟩ met 3 varianten. Voeg microcopy toe (ondertitel/tooltips) en advies over plaatsing.",
+    "output": [
+      "3 CTA’s",
+      "Advies plaatsing"
+    ],
+    "qc": [
+      "CTA’s doelgericht",
+      "Microcopy helder"
+    ]
   },
   {
     "id": "3-1",
     "chapter": "3 · Creativiteit & Brainstorm",
-    "title": "Ideeën genereren",
-    "when": "Wanneer je nieuwe invalshoeken zoekt.",
-    "deliver": ["10 creatieve ideeën"],
-    "inputFields": [{ "key": "topic", "label": "Onderwerp", "type": "text" }],
-    "prompt": "Geef 10 creatieve ideeën rond ⟨topic⟩.",
-    "output": ["Lijst met ideeën"],
-    "qc": ["Variatie", "Originaliteit"]
+    "title": "Divergent: 25 ideeën",
+    "when": "Wanneer je veel opties wil zonder te oordelen.",
+    "deliver": [
+      "25 ruwe ideeën",
+      "Clustering in 3 thema’s"
+    ],
+    "inputFields": [
+      {
+        "key": "vraag",
+        "label": "Creatieve vraag",
+        "type": "text"
+      },
+      {
+        "key": "constraints",
+        "label": "Beperkingen (optioneel)",
+        "type": "textarea"
+      }
+    ],
+    "prompt": "Genereer 25 ideeën voor ⟨vraag⟩ binnen ⟨constraints⟩ (indien gegeven). Cluster ze in 3 thema’s en markeer 3 verrassende.",
+    "output": [
+      "Ideeënlijst",
+      "Clusters"
+    ],
+    "qc": [
+      "Geen zelfcensuur",
+      "Verrassing aanwezig"
+    ]
   },
   {
     "id": "3-2",
     "chapter": "3 · Creativiteit & Brainstorm",
-    "title": "Alternatieve titels",
-    "when": "Als je pakkende titels nodig hebt.",
-    "deliver": ["5–10 alternatieve titels"],
-    "inputFields": [
-      { "key": "text", "label": "Originele titel/onderwerp", "type": "text" }
+    "title": "SCAMPER op 1 idee",
+    "when": "Als je 1 idee wilt uitbouwen via variaties.",
+    "deliver": [
+      "SCAMPER‑varianten",
+      "Korte evaluatie per variant"
     ],
-    "prompt": "Bedenk 10 alternatieve titels voor: ⟨text⟩",
-    "output": ["Titellijst"],
-    "qc": ["Creatief", "Relevantie behouden"]
+    "inputFields": [
+      {
+        "key": "idee",
+        "label": "BasisiDee",
+        "type": "text"
+      }
+    ],
+    "prompt": "Pas SCAMPER toe op ⟨idee⟩ en beschrijf per stap (Substitute, Combine, Adapt, Modify, Put to other use, Eliminate, Reverse) een variant met korte evaluatie.",
+    "output": [
+      "7 varianten",
+      "Evaluaties"
+    ],
+    "qc": [
+      "Alle stappen behandeld",
+      "Praktische haalbaarheid benoemd"
+    ]
   },
   {
     "id": "3-3",
     "chapter": "3 · Creativiteit & Brainstorm",
-    "title": "Slogans",
-    "when": "Als je korte slogans nodig hebt.",
-    "deliver": ["5 slogans"],
-    "inputFields": [
-      { "key": "brand", "label": "Merk/onderwerp", "type": "text" }
+    "title": "Analogieën bouwen",
+    "when": "Wanneer je complexe zaken wilt verhelderen.",
+    "deliver": [
+      "3 analogieën",
+      "Beperkingen per analogie"
     ],
-    "prompt": "Bedenk 5 creatieve slogans voor: ⟨brand⟩",
-    "output": ["Slogans"],
-    "qc": ["Kort", "Creatief", "Merk passend"]
+    "inputFields": [
+      {
+        "key": "concept",
+        "label": "Concept/onderwerp",
+        "type": "text"
+      },
+      {
+        "key": "publiek",
+        "label": "Publiek (kind/laaggeletterd/exec)",
+        "type": "text"
+      }
+    ],
+    "prompt": "Maak 3 analogieën om ⟨concept⟩ uit te leggen aan ⟨publiek⟩. Benoem per analogie 1 beperking.",
+    "output": [
+      "3 analogieën",
+      "Beperkingen"
+    ],
+    "qc": [
+      "Analogieën passend",
+      "Geen misleiding"
+    ]
+  },
+  {
+    "id": "3-4",
+    "chapter": "3 · Creativiteit & Brainstorm",
+    "title": "Invalshoeken-matrix",
+    "when": "Als je content vanuit meerdere perspectieven wilt.",
+    "deliver": [
+      "Matrix (doel × publiek)",
+      "Top 5 invalshoeken"
+    ],
+    "inputFields": [
+      {
+        "key": "doel",
+        "label": "Contentdoel",
+        "type": "text"
+      },
+      {
+        "key": "publieken",
+        "label": "Publieken (lijst)",
+        "type": "textarea"
+      }
+    ],
+    "prompt": "Bouw een invalshoekenmatrix voor ⟨doel⟩ naar ⟨publieken⟩. Geef 5 beste invalshoeken met voorbeeldtitel.",
+    "output": [
+      "Matrix",
+      "Top 5 invalshoeken"
+    ],
+    "qc": [
+      "Publiek gevarieerd",
+      "Voorbeelden concreet"
+    ]
+  },
+  {
+    "id": "3-5",
+    "chapter": "3 · Creativiteit & Brainstorm",
+    "title": "Elevator pitch varianten",
+    "when": "Wanneer je meerdere ‘pitches’ wilt testen.",
+    "deliver": [
+      "3 pitches: probleem/waarde/proof/call‑to‑action"
+    ],
+    "inputFields": [
+      {
+        "key": "propositie",
+        "label": "Propositie",
+        "type": "text"
+      },
+      {
+        "key": "doelgroep",
+        "label": "Doelgroep",
+        "type": "text"
+      },
+      {
+        "key": "bewijs",
+        "label": "Bewijs (cijfers/cases)",
+        "type": "textarea"
+      }
+    ],
+    "prompt": "Schrijf 3 elevator pitches voor ⟨propositie⟩ aan ⟨doelgroep⟩. Volg structuur: probleem → waarde → bewijs → call‑to‑action.",
+    "output": [
+      "3 pitches"
+    ],
+    "qc": [
+      "Structuur gevolgd",
+      "CTA duidelijk"
+    ]
   },
   {
     "id": "4-1",
     "chapter": "4 · Onderzoek & Analyse",
     "title": "Feitencheck",
-    "when": "Wanneer je wilt nagaan of een uitspraak of bron betrouwbaar is.",
+    "when": "Als je claims wilt verifiëren.",
     "deliver": [
-      "Controle of informatie juist is",
-      "Alternatieve bronvermelding"
+      "Lijst claims",
+      "Beoordeling (waar/onzeker/onjuist)",
+      "Verantwoording"
     ],
     "inputFields": [
-      { "key": "claim", "label": "De uitspraak of bron", "type": "textarea" }
+      {
+        "key": "claims",
+        "label": "Claims/uitspraken",
+        "type": "textarea"
+      }
     ],
-    "prompt": "Controleer of de volgende uitspraak correct is en vermeld betrouwbare bronnen:\n\n⟨claim⟩",
-    "output": ["Samenvatting van juistheid", "Bronnenlijst"],
-    "qc": ["Bronnen aanwezig", "Correctheid beoordeeld"]
+    "prompt": "Voer een feitencheck uit op: ⟨claims⟩. Classificeer per claim (waar/onzeker/onjuist) met korte toelichting en bronrichtingen (geen directe links nodig).",
+    "output": [
+      "Tabel claim | beoordeling | toelichting"
+    ],
+    "qc": [
+      "Geen stelligheid zonder basis",
+      "Neutraal geformuleerd"
+    ]
   },
   {
     "id": "4-2",
     "chapter": "4 · Onderzoek & Analyse",
-    "title": "Vergelijking",
-    "when": "Als je verschillen en overeenkomsten wilt zien tussen twee concepten.",
-    "deliver": ["Tabel met verschillen en overeenkomsten", "Samenvatting"],
-    "inputFields": [
-      { "key": "a", "label": "Eerste concept", "type": "text" },
-      { "key": "b", "label": "Tweede concept", "type": "text" }
+    "title": "Vergelijkingsanalyse",
+    "when": "Als je A vs B helder wilt maken.",
+    "deliver": [
+      "Vergelijkingstabel",
+      "Kernverschillen",
+      "Advies passend bij context"
     ],
-    "prompt": "Vergelijk ⟨a⟩ en ⟨b⟩. Toon verschillen en overeenkomsten in een tabel en sluit af met een korte samenvatting.",
-    "output": ["Vergelijkende tabel", "Samenvatting"],
-    "qc": ["Duidelijke tabel", "Samenvatting neutraal"]
+    "inputFields": [
+      {
+        "key": "a",
+        "label": "Optie A",
+        "type": "text"
+      },
+      {
+        "key": "b",
+        "label": "Optie B",
+        "type": "text"
+      },
+      {
+        "key": "criteria",
+        "label": "Criteria",
+        "type": "textarea"
+      }
+    ],
+    "prompt": "Vergelijk ⟨a⟩ en ⟨b⟩ op ⟨criteria⟩. Benoem contextafhankelijke keuze-adviezen (wanneer A, wanneer B).",
+    "output": [
+      "Tabel",
+      "Advies"
+    ],
+    "qc": [
+      "Criteria consistent",
+      "Context meegewogen"
+    ]
   },
   {
     "id": "4-3",
     "chapter": "4 · Onderzoek & Analyse",
     "title": "Statistische uitleg",
-    "when": "Wanneer je complexe cijfers of percentages simpel wilt begrijpen.",
-    "deliver": ["Eenvoudige uitleg", "Voorbeeld"],
-    "inputFields": [
-      { "key": "data", "label": "Statistiek of cijfer", "type": "textarea" }
+    "when": "Als je uitkomsten begrijpelijk wilt maken.",
+    "deliver": [
+      "Uitleg methode",
+      "Interpretatie",
+      "Beperkingen"
     ],
-    "prompt": "Leg de betekenis van ⟨data⟩ uit in eenvoudige taal. Geef een voorbeeld uit de praktijk.",
-    "output": ["Uitleg in gewone taal", "Voorbeeld"],
-    "qc": ["Begrijpelijk", "Concreet voorbeeld aanwezig"]
+    "inputFields": [
+      {
+        "key": "vraag",
+        "label": "Onderzoeksvraag",
+        "type": "text"
+      },
+      {
+        "key": "data",
+        "label": "Korte beschrijving dataset",
+        "type": "textarea"
+      },
+      {
+        "key": "methode",
+        "label": "Methode (t‑test/regressie/etc.)",
+        "type": "text"
+      }
+    ],
+    "prompt": "Leg in begrijpelijke taal uit hoe ⟨methode⟩ is toegepast op ⟨data⟩ voor ⟨vraag⟩. Focus op interpretatie en beperkingen.",
+    "output": [
+      "Uitleg + interpretatie",
+      "Beperkingen"
+    ],
+    "qc": [
+      "Geen overclaimen",
+      "Jargon uitgelegd"
+    ]
   },
   {
     "id": "4-4",
     "chapter": "4 · Onderzoek & Analyse",
     "title": "Literatuurverwijzing",
-    "when": "Wanneer je bronnen zoekt rond een onderwerp.",
-    "deliver": ["Lijst met literatuur", "Samenvatting per bron"],
-    "inputFields": [{ "key": "topic", "label": "Onderwerp", "type": "text" }],
-    "prompt": "Zoek 3 relevante wetenschappelijke bronnen rond ⟨topic⟩ en geef een korte samenvatting per bron.",
-    "output": ["Lijst met bronnen", "Samenvattingen"],
-    "qc": ["3 bronnen", "Samenvattingen aanwezig"]
+    "when": "Wanneer je snelle referenties wilt.",
+    "deliver": [
+      "3–5 relevante publicaties",
+      "Korte samenvatting per stuk"
+    ],
+    "inputFields": [
+      {
+        "key": "onderwerp",
+        "label": "Onderwerp",
+        "type": "text"
+      }
+    ],
+    "prompt": "Noem 3–5 kernpublicaties rond ⟨onderwerp⟩ met 1–2 zinnen samenvatting per publicatie.",
+    "output": [
+      "Lijst publicaties + samenvatting"
+    ],
+    "qc": [
+      "Divers en relevant",
+      "Geen paywall‑citaten"
+    ]
   },
   {
     "id": "4-5",
     "chapter": "4 · Onderzoek & Analyse",
-    "title": "Voor- en nadelenanalyse",
-    "when": "Als je de voor- en nadelen van een keuze wilt zien.",
-    "deliver": ["Lijst met voordelen", "Lijst met nadelen"],
-    "inputFields": [
-      { "key": "topic", "label": "Onderwerp of keuze", "type": "text" }
+    "title": "Voor‑ en nadelenanalyse",
+    "when": "Als je de balans wilt zien.",
+    "deliver": [
+      "Lijst ‘pro’ vs ‘con’",
+      "Context-advies"
     ],
-    "prompt": "Maak een lijst met voor- en nadelen van ⟨topic⟩.",
-    "output": ["Lijst voor- en nadelen"],
-    "qc": ["Beide lijsten gevuld", "Evenwichtige weergave"]
+    "inputFields": [
+      {
+        "key": "onderwerp",
+        "label": "Onderwerp/keuze",
+        "type": "text"
+      }
+    ],
+    "prompt": "Som de belangrijkste voor‑ en nadelen van ⟨onderwerp⟩ op. Sluit af met context-gebonden advies (wanneer kiezen, wanneer niet).",
+    "output": [
+      "Pro/Con lijst",
+      "Advies"
+    ],
+    "qc": [
+      "Evenwichtig",
+      "Geen absolute stelligheid"
+    ]
   },
   {
     "id": "5-1",
     "chapter": "5 · Leren & Uitleg",
-    "title": "Concept uitleggen",
-    "when": "Wanneer je iets moeilijk eenvoudig wilt begrijpen.",
-    "deliver": ["Uitleg in eenvoudige taal"],
+    "title": "Concept uitleggen (niveau‑keuze)",
+    "when": "Als je uitleg op maat wilt (kind, student, exec).",
+    "deliver": [
+      "Uitleg op gekozen niveau",
+      "Voorbeeld en metafoor"
+    ],
     "inputFields": [
-      { "key": "concept", "label": "Het concept", "type": "text" },
+      {
+        "key": "concept",
+        "label": "Concept",
+        "type": "text"
+      },
       {
         "key": "niveau",
-        "label": "Uitlegniveau (kind, student, expert)",
+        "label": "Niveau (kind/student/exec)",
         "type": "text"
       }
     ],
-    "prompt": "Leg ⟨concept⟩ uit op het niveau van ⟨niveau⟩.",
-    "output": ["Uitleg afgestemd op niveau"],
-    "qc": ["Correct", "Begrijpelijk voor gekozen niveau"]
+    "prompt": "Leg ⟨concept⟩ uit op niveau ⟨niveau⟩, voeg 1 voorbeeld en 1 metafoor toe.",
+    "output": [
+      "Uitleg",
+      "Voorbeeld + metafoor"
+    ],
+    "qc": [
+      "Juiste niveau",
+      "Geen jargon zonder toelichting"
+    ]
   },
   {
     "id": "5-2",
     "chapter": "5 · Leren & Uitleg",
-    "title": "Stap-voor-stap instructie",
-    "when": "Wanneer je praktische instructies wilt maken.",
-    "deliver": ["Duidelijke stappenlijst"],
-    "inputFields": [
-      { "key": "taak", "label": "Taak of handeling", "type": "text" }
+    "title": "Stap‑voor‑stap gids",
+    "when": "Wanneer je een procedure helder wilt maken.",
+    "deliver": [
+      "Stappenplan",
+      "Benodigde middelen",
+      "Foutpreventie"
     ],
-    "prompt": "Geef een stap-voor-stap instructie voor: ⟨taak⟩.",
-    "output": ["Stappenlijst"],
-    "qc": ["Alle stappen aanwezig", "Logische volgorde"]
+    "inputFields": [
+      {
+        "key": "taak",
+        "label": "Taak/proces",
+        "type": "text"
+      }
+    ],
+    "prompt": "Maak een stap‑voor‑stap handleiding voor ⟨taak⟩ met benodigdheden en veelgemaakte fouten + preventie.",
+    "output": [
+      "Stappenplan",
+      "Foutpreventie"
+    ],
+    "qc": [
+      "Stappen logisch en volledig"
+    ]
   },
   {
     "id": "5-3",
     "chapter": "5 · Leren & Uitleg",
-    "title": "Analogie maken",
-    "when": "Als je een metafoor wilt gebruiken om iets uit te leggen.",
-    "deliver": ["Analogie of vergelijking"],
-    "inputFields": [{ "key": "concept", "label": "Concept", "type": "text" }],
-    "prompt": "Leg ⟨concept⟩ uit met een passende analogie of metafoor.",
-    "output": ["Analogie of metafoor"],
-    "qc": ["Beeldend", "Begrijpelijk"]
+    "title": "Analogie-uitleg",
+    "when": "Als je via vergelijking wilt verduidelijken.",
+    "deliver": [
+      "1 hoofd-analogie",
+      "Beperking/valkuil benoemd"
+    ],
+    "inputFields": [
+      {
+        "key": "concept",
+        "label": "Concept",
+        "type": "text"
+      },
+      {
+        "key": "analogie",
+        "label": "Bron van analogie (keuken/sport/etc.)",
+        "type": "text"
+      }
+    ],
+    "prompt": "Leg ⟨concept⟩ uit met een analogie uit ⟨analogie⟩. Benoem 1 beperking.",
+    "output": [
+      "Analogie",
+      "Beperking"
+    ],
+    "qc": [
+      "Analogie relevant",
+      "Geen misleidende simplificatie"
+    ]
   },
   {
     "id": "5-4",
     "chapter": "5 · Leren & Uitleg",
-    "title": "Veelgestelde vragen",
-    "when": "Wanneer je een FAQ wilt opstellen.",
-    "deliver": ["Lijst van vragen met antwoorden"],
-    "inputFields": [{ "key": "topic", "label": "Onderwerp", "type": "text" }],
-    "prompt": "Maak een FAQ met 5 veelgestelde vragen en antwoorden over: ⟨topic⟩.",
-    "output": ["FAQ-lijst"],
-    "qc": ["5 vragen aanwezig", "Antwoorden duidelijk"]
+    "title": "FAQ‑generator",
+    "when": "Als je veelgestelde vragen wilt bundelen.",
+    "deliver": [
+      "8–10 Q&A’s",
+      "Volgorde op belangrijkheid"
+    ],
+    "inputFields": [
+      {
+        "key": "onderwerp",
+        "label": "Onderwerp",
+        "type": "text"
+      }
+    ],
+    "prompt": "Genereer 8–10 FAQ’s rond ⟨onderwerp⟩ met korte, duidelijke antwoorden. Sorteer op belangrijkheid.",
+    "output": [
+      "FAQ‑lijst"
+    ],
+    "qc": [
+      "Geen overlap",
+      "Antwoorden kort en juist"
+    ]
   },
   {
     "id": "5-5",
     "chapter": "5 · Leren & Uitleg",
     "title": "Formule uitleggen",
-    "when": "Wanneer je een wiskundige of natuurkundige formule wilt begrijpen.",
-    "deliver": ["Uitleg formule", "Voorbeeldberekening"],
-    "inputFields": [{ "key": "formule", "label": "Formule", "type": "text" }],
-    "prompt": "Leg uit hoe ⟨formule⟩ werkt en geef een voorbeeldberekening.",
-    "output": ["Uitleg", "Voorbeeld"],
-    "qc": ["Correct", "Voorbeeld uitgewerkt"]
+    "when": "Wanneer een formule intuïtief moet worden.",
+    "deliver": [
+      "Intuïtieve uitleg",
+      "Voorbeeldberekening",
+      "Veelgemaakte fouten"
+    ],
+    "inputFields": [
+      {
+        "key": "formule",
+        "label": "Formule",
+        "type": "text"
+      }
+    ],
+    "prompt": "Leg de formule ⟨formule⟩ intuïtief uit, geef 1 uitgewerkt voorbeeld en noem 2 veelgemaakte fouten.",
+    "output": [
+      "Uitleg + voorbeeld",
+      "Fouten"
+    ],
+    "qc": [
+      "Rekenstappen correct",
+      "Intuïtief verwoord"
+    ]
   },
   {
     "id": "6-1",
     "chapter": "6 · Productiviteit & Organisatie",
     "title": "Dagplanning",
     "when": "Wanneer je je dag wilt structureren.",
-    "deliver": ["Planning per uur", "Prioriteitenlijst"],
+    "deliver": [
+      "Planning per uur",
+      "Prioriteitenlijst"
+    ],
     "inputFields": [
-      { "key": "taken", "label": "Belangrijkste taken", "type": "textarea" }
+      {
+        "key": "taken",
+        "label": "Belangrijkste taken",
+        "type": "textarea"
+      }
     ],
     "prompt": "Maak een dagplanning op basis van deze taken: ⟨taken⟩. Verdeel ze per uur en geef de 3 hoogste prioriteiten aan.",
-    "output": ["Dagplanning", "Top 3 prioriteiten"],
-    "qc": ["Alle taken ingepland", "Prioriteiten duidelijk"]
+    "output": [
+      "Dagplanning",
+      "Top 3 prioriteiten"
+    ],
+    "qc": [
+      "Alle taken ingepland",
+      "Prioriteiten duidelijk"
+    ]
   },
   {
     "id": "6-2",
     "chapter": "6 · Productiviteit & Organisatie",
     "title": "Eisen en wensen scheiden",
     "when": "Als je keuzes moet maken in een project.",
-    "deliver": ["Twee lijsten: eisen en wensen"],
+    "deliver": [
+      "Twee lijsten: eisen en wensen"
+    ],
     "inputFields": [
       {
         "key": "lijst",
@@ -299,68 +1006,124 @@
       }
     ],
     "prompt": "Splits de volgende lijst in harde eisen en zachte wensen:\n\n⟨lijst⟩",
-    "output": ["Lijst eisen", "Lijst wensen"],
-    "qc": ["Goede scheiding", "Geen elementen verloren"]
+    "output": [
+      "Lijst eisen",
+      "Lijst wensen"
+    ],
+    "qc": [
+      "Goede scheiding",
+      "Geen elementen verloren"
+    ]
   },
   {
     "id": "6-3",
     "chapter": "6 · Productiviteit & Organisatie",
     "title": "Prioriteitenmatrix",
     "when": "Als je wilt focussen op wat belangrijk is.",
-    "deliver": ["Matrix belangrijk/urgent"],
+    "deliver": [
+      "Matrix belangrijk/urgent"
+    ],
     "inputFields": [
-      { "key": "taken", "label": "Takenlijst", "type": "textarea" }
+      {
+        "key": "taken",
+        "label": "Takenlijst",
+        "type": "textarea"
+      }
     ],
     "prompt": "Plaats deze taken in een Eisenhower-matrix (Belangrijk/Urgent): ⟨taken⟩.",
-    "output": ["Matrix met 4 kwadranten"],
-    "qc": ["Alle taken ingedeeld", "Matrix correct toegepast"]
+    "output": [
+      "Matrix met 4 kwadranten"
+    ],
+    "qc": [
+      "Alle taken ingedeeld",
+      "Matrix correct toegepast"
+    ]
   },
   {
     "id": "6-4",
     "chapter": "6 · Productiviteit & Organisatie",
     "title": "Projectplan",
     "when": "Wanneer je start met een project.",
-    "deliver": ["Samenvatting met doelen, stappen en risico’s"],
+    "deliver": [
+      "Samenvatting met doelen, stappen en risico’s"
+    ],
     "inputFields": [
-      { "key": "project", "label": "Projectnaam", "type": "text" },
-      { "key": "doelen", "label": "Doelen", "type": "textarea" }
+      {
+        "key": "project",
+        "label": "Projectnaam",
+        "type": "text"
+      },
+      {
+        "key": "doelen",
+        "label": "Doelen",
+        "type": "textarea"
+      }
     ],
     "prompt": "Maak een kort projectplan voor ⟨project⟩. Beschrijf doelen, stappen en mogelijke risico’s.",
-    "output": ["Projectplan"],
-    "qc": ["Doelen duidelijk", "Risico’s benoemd"]
+    "output": [
+      "Projectplan"
+    ],
+    "qc": [
+      "Doelen duidelijk",
+      "Risico’s benoemd"
+    ]
   },
   {
     "id": "6-5",
     "chapter": "6 · Productiviteit & Organisatie",
     "title": "Notulen samenvatten",
     "when": "Als je snel overzicht wilt na een meeting.",
-    "deliver": ["Samenvatting met beslissingen en acties"],
+    "deliver": [
+      "Samenvatting met beslissingen en acties"
+    ],
     "inputFields": [
-      { "key": "notulen", "label": "Meetingnotities", "type": "textarea" }
+      {
+        "key": "notulen",
+        "label": "Meetingnotities",
+        "type": "textarea"
+      }
     ],
     "prompt": "Vat de volgende notulen samen en haal de belangrijkste beslissingen en acties eruit:\n\n⟨notulen⟩",
-    "output": ["Samenvatting", "Lijst acties"],
-    "qc": ["Beslissingen duidelijk", "Acties concreet"]
+    "output": [
+      "Samenvatting",
+      "Lijst acties"
+    ],
+    "qc": [
+      "Beslissingen duidelijk",
+      "Acties concreet"
+    ]
   },
   {
     "id": "7-1",
     "chapter": "7 · Persoonlijke Ontwikkeling",
     "title": "SMART-doelen formuleren",
     "when": "Wanneer je doelen concreet wilt maken.",
-    "deliver": ["Lijst van SMART-doelen"],
+    "deliver": [
+      "Lijst van SMART-doelen"
+    ],
     "inputFields": [
-      { "key": "doelen", "label": "Doelen in ruwe vorm", "type": "textarea" }
+      {
+        "key": "doelen",
+        "label": "Doelen in ruwe vorm",
+        "type": "textarea"
+      }
     ],
     "prompt": "Herschrijf deze doelen volgens het SMART-model:\n\n⟨doelen⟩",
-    "output": ["SMART-doelen"],
-    "qc": ["Alle criteria (Specifiek, Meetbaar, etc.) aanwezig"]
+    "output": [
+      "SMART-doelen"
+    ],
+    "qc": [
+      "Alle criteria (Specifiek, Meetbaar, etc.) aanwezig"
+    ]
   },
   {
     "id": "7-2",
     "chapter": "7 · Persoonlijke Ontwikkeling",
     "title": "Dagreflectie",
     "when": "Als je dagelijks wilt leren van je ervaringen.",
-    "deliver": ["Reflectieverslag met 3 inzichten"],
+    "deliver": [
+      "Reflectieverslag met 3 inzichten"
+    ],
     "inputFields": [
       {
         "key": "ervaringen",
@@ -369,15 +1132,22 @@
       }
     ],
     "prompt": "Schrijf een dagreflectie over ⟨ervaringen⟩. Voeg 3 inzichten of lessen toe.",
-    "output": ["Reflectie met lessen"],
-    "qc": ["Persoonlijk", "Concrete inzichten"]
+    "output": [
+      "Reflectie met lessen"
+    ],
+    "qc": [
+      "Persoonlijk",
+      "Concrete inzichten"
+    ]
   },
   {
     "id": "7-3",
     "chapter": "7 · Persoonlijke Ontwikkeling",
     "title": "Sterktes in kaart brengen",
     "when": "Wanneer je je sterke punten wilt ontdekken.",
-    "deliver": ["Overzicht sterke punten"],
+    "deliver": [
+      "Overzicht sterke punten"
+    ],
     "inputFields": [
       {
         "key": "ervaringen",
@@ -386,15 +1156,22 @@
       }
     ],
     "prompt": "Analyseer ⟨ervaringen⟩ en beschrijf de onderliggende sterke punten.",
-    "output": ["Lijst sterke punten"],
-    "qc": ["Sterktes concreet", "Gebaseerd op voorbeelden"]
+    "output": [
+      "Lijst sterke punten"
+    ],
+    "qc": [
+      "Sterktes concreet",
+      "Gebaseerd op voorbeelden"
+    ]
   },
   {
     "id": "7-4",
     "chapter": "7 · Persoonlijke Ontwikkeling",
     "title": "Belemmerende overtuigingen",
     "when": "Als je patronen wilt doorbreken.",
-    "deliver": ["Lijst overtuigingen en alternatieve gedachten"],
+    "deliver": [
+      "Lijst overtuigingen en alternatieve gedachten"
+    ],
     "inputFields": [
       {
         "key": "overtuigingen",
@@ -403,21 +1180,38 @@
       }
     ],
     "prompt": "Identificeer de belemmerende overtuigingen in ⟨overtuigingen⟩ en formuleer helpende alternatieven.",
-    "output": ["Lijst belemmerende overtuigingen", "Alternatieven"],
-    "qc": ["Beide lijsten aanwezig", "Alternatieven positief geformuleerd"]
+    "output": [
+      "Lijst belemmerende overtuigingen",
+      "Alternatieven"
+    ],
+    "qc": [
+      "Beide lijsten aanwezig",
+      "Alternatieven positief geformuleerd"
+    ]
   },
   {
     "id": "7-5",
     "chapter": "7 · Persoonlijke Ontwikkeling",
     "title": "Leefregels opstellen",
     "when": "Als je richtlijnen voor jezelf wilt creëren.",
-    "deliver": ["Set van persoonlijke leefregels"],
+    "deliver": [
+      "Set van persoonlijke leefregels"
+    ],
     "inputFields": [
-      { "key": "waarden", "label": "Belangrijke waarden", "type": "textarea" }
+      {
+        "key": "waarden",
+        "label": "Belangrijke waarden",
+        "type": "textarea"
+      }
     ],
     "prompt": "Maak leefregels die passen bij deze waarden: ⟨waarden⟩.",
-    "output": ["Lijst leefregels"],
-    "qc": ["Leefregels passen bij waarden", "Helder en uitvoerbaar"]
+    "output": [
+      "Lijst leefregels"
+    ],
+    "qc": [
+      "Leefregels passen bij waarden",
+      "Helder en uitvoerbaar"
+    ]
   },
   {
     "id": "8-1",
@@ -430,7 +1224,11 @@
       "Signalen om op door te vragen"
     ],
     "inputFields": [
-      { "key": "doelgroep", "label": "Doelgroep", "type": "text" },
+      {
+        "key": "doelgroep",
+        "label": "Doelgroep",
+        "type": "text"
+      },
       {
         "key": "context",
         "label": "Context (sales/intake/coaching)",
@@ -447,8 +1245,12 @@
         "type": "text"
       }
     ],
-    "prompt": "Maak een discovery-vragenlijst (10 vragen) voor ⟨doelgroep⟩.\nContext: ⟨context⟩\nDoel: ⟨doel⟩\nTone: ⟨tone⟩\n\nLever:\n1) 10 vragen\n2) Follow-ups (1 per vraag)\n3) Signalen om op door te vragen",
-    "output": ["Vragenlijst", "Follow-ups", "Signalen"],
+    "prompt": "Maak een discovery-vragenlijst (10 vragen) voor ⟨doelgroep⟩.\nContext: ⟨context⟩\nDoel: ⟨doel⟩\nTone: ⟨tone⟩\n\nLever: 1) 10 vragen 2) Follow-ups (1 per vraag) 3) Signalen om op door te vragen",
+    "output": [
+      "Vragenlijst",
+      "Follow-ups",
+      "Signalen"
+    ],
     "qc": [
       "Open en niet-suggestief",
       "Follow-ups verdiepen echt",
@@ -466,8 +1268,16 @@
       "Empathische framing"
     ],
     "inputFields": [
-      { "key": "product", "label": "Product/dienst", "type": "text" },
-      { "key": "doelgroep", "label": "Doelgroep", "type": "text" },
+      {
+        "key": "product",
+        "label": "Product/dienst",
+        "type": "text"
+      },
+      {
+        "key": "doelgroep",
+        "label": "Doelgroep",
+        "type": "text"
+      },
       {
         "key": "bezwaren",
         "label": "Bekende bezwaren (optioneel)",
@@ -479,8 +1289,10 @@
         "type": "textarea"
       }
     ],
-    "prompt": "Som top 8 bezwaren voor ⟨product⟩ bij ⟨doelgroep⟩.\nBekende bezwaren: ⟨bezwaren⟩\nBewijs: ⟨bewijs⟩\n\nLever per bezwaar:\n- Korte weerlegging\n- Bewijs/voorbeeld\n- Empathische framing",
-    "output": ["Tabel bezwaar | weerlegging | bewijs | framing"],
+    "prompt": "Som top 8 bezwaren voor ⟨product⟩ bij ⟨doelgroep⟩.\nBekende bezwaren: ⟨bezwaren⟩\nBewijs: ⟨bewijs⟩\n\nLever per bezwaar: korte weerlegging, bewijs/voorbeeld en empathische framing.",
+    "output": [
+      "Tabel bezwaar | weerlegging | bewijs | framing"
+    ],
     "qc": [
       "Weerlegging feitelijk",
       "Empathisch, niet defensief",
@@ -498,9 +1310,21 @@
       "Upsell-paden"
     ],
     "inputFields": [
-      { "key": "product", "label": "Product/dienst", "type": "text" },
-      { "key": "doelgroep", "label": "Doelgroep", "type": "text" },
-      { "key": "kosten", "label": "Kostenstructuur (kort)", "type": "text" },
+      {
+        "key": "product",
+        "label": "Product/dienst",
+        "type": "text"
+      },
+      {
+        "key": "doelgroep",
+        "label": "Doelgroep",
+        "type": "text"
+      },
+      {
+        "key": "kosten",
+        "label": "Kostenstructuur (kort)",
+        "type": "text"
+      },
       {
         "key": "concurrentie",
         "label": "Concurrentieprijzen (range)",
@@ -512,8 +1336,10 @@
         "type": "text"
       }
     ],
-    "prompt": "Ontwerp 3 prijsmodellen voor ⟨product⟩.\nDoelgroep: ⟨doelgroep⟩\nKostenstructuur: ⟨kosten⟩\nConcurrentie: ⟨concurrentie⟩\nStrategisch doel: ⟨strategie⟩\n\nLever:\n1) Good/Better/Best\n2) Value-meters\n3) Upsell-paden",
-    "output": ["Tabel met 3 modellen + value-meters + upsells"],
+    "prompt": "Ontwerp 3 prijsmodellen voor ⟨product⟩.\nDoelgroep: ⟨doelgroep⟩\nKosten: ⟨kosten⟩\nConcurrentie: ⟨concurrentie⟩\nStrategisch doel: ⟨strategie⟩\n\nLever: 1) Good/Better/Best 2) Value-meters 3) Upsell-paden",
+    "output": [
+      "Tabel 3 modellen + value-meters + upsells"
+    ],
     "qc": [
       "Modellen onderscheidend",
       "Value-meters logisch",
@@ -536,7 +1362,11 @@
         "label": "Klanttype (nieuw/enterprise/MKB)",
         "type": "text"
       },
-      { "key": "product", "label": "Product/dienst", "type": "text" },
+      {
+        "key": "product",
+        "label": "Product/dienst",
+        "type": "text"
+      },
       {
         "key": "doelen",
         "label": "Klantdoelen (ROI/adoptie/tevredenheid)",
@@ -548,9 +1378,15 @@
         "type": "text"
       }
     ],
-    "prompt": "Maak een 30-60-90 dagen customer success-plan voor ⟨klant⟩.\nProduct: ⟨product⟩\nKlantdoelen: ⟨doelen⟩\nResources: ⟨resources⟩\n\nLever per fase:\n- Acties\n- Deliverables\n- Success metrics",
-    "output": ["Tabel Fase | Acties | Deliverables | Metrics"],
-    "qc": ["Metrics meetbaar", "Deliverables haalbaar", "Acties concreet"]
+    "prompt": "Maak een 30-60-90 dagen customer success-plan voor ⟨klant⟩.\nProduct: ⟨product⟩\nKlantdoelen: ⟨doelen⟩\nResources: ⟨resources⟩\n\nLever per fase: acties, deliverables en metrics.",
+    "output": [
+      "Tabel Fase | Acties | Deliverables | Metrics"
+    ],
+    "qc": [
+      "Metrics meetbaar",
+      "Deliverables haalbaar",
+      "Acties concreet"
+    ]
   },
   {
     "id": "8-5",
@@ -578,24 +1414,38 @@
         "label": "Kanalen (e-mail/chat/helpdesk)",
         "type": "text"
       },
-      { "key": "links", "label": "Links naar FAQ/docs", "type": "textarea" }
+      {
+        "key": "links",
+        "label": "Links naar FAQ/docs",
+        "type": "textarea"
+      }
     ],
-    "prompt": "Schrijf 8 support-macro’s voor ⟨issues⟩.\nTone: ⟨tone⟩\nKanalen: ⟨kanalen⟩\nResources: ⟨links⟩\n\nLever per macro:\n- Korte versie (chat)\n- Uitgebreide versie (mail)\n- Placeholders",
-    "output": ["8 macro’s met varianten"],
-    "qc": ["Oplossingsgericht", "Links bruikbaar", "Tone consistent"]
+    "prompt": "Schrijf 8 support-macro’s voor ⟨issues⟩.\nTone: ⟨tone⟩\nKanalen: ⟨kanalen⟩\nResources: ⟨links⟩\n\nLever per macro: korte versie (chat), uitgebreide versie (mail) en placeholders.",
+    "output": [
+      "8 macro’s met varianten"
+    ],
+    "qc": [
+      "Oplossingsgericht",
+      "Links bruikbaar",
+      "Tone consistent"
+    ]
   },
   {
     "id": "9-1",
     "chapter": "9 · Leren, Coaching & Mentorschap",
     "title": "Socratic coach",
-    "when": "Wanneer je helderheid of zelfinzicht zoekt via vragen i.p.v. advies.",
+    "when": "Wanneer je helderheid/zelfinzicht zoekt via vragen i.p.v. advies.",
     "deliver": [
       "1 gerichte vraag per beurt",
-      "Korte samenvatting van je antwoord",
-      "3 opties: verdiepen/verbreden/afronden"
+      "Samenvatting van je antwoord",
+      "3 opties (verdiepen/verbreden/afronden)"
     ],
     "inputFields": [
-      { "key": "onderwerp", "label": "Onderwerp/keuze", "type": "text" },
+      {
+        "key": "onderwerp",
+        "label": "Onderwerp/keuze",
+        "type": "text"
+      },
       {
         "key": "doel",
         "label": "Doel (helderheid/prioriteit/richting)",
@@ -606,10 +1456,16 @@
         "label": "Mate van uitdaging (mild/confronterend)",
         "type": "text"
       },
-      { "key": "tijd", "label": "Tijdskader (kort/diep)", "type": "text" }
+      {
+        "key": "tijd",
+        "label": "Tijdskader (kort/diep)",
+        "type": "text"
+      }
     ],
-    "prompt": "Speel coach met Socratic method.\nOnderwerp: ⟨onderwerp⟩\nDoel: ⟨doel⟩\nUitdaging: ⟨uitdaging⟩\nTijdskader: ⟨tijd⟩\n\nRegels:\n- Stel 1 vraag per beurt\n- Vat mijn antwoord kort samen\n- Eindig met 3 opties (verdiepen/verbreden/afronden)",
-    "output": ["Iteratieve dialoog"],
+    "prompt": "Speel coach met Socratic method.\nOnderwerp: ⟨onderwerp⟩\nDoel: ⟨doel⟩\nUitdaging: ⟨uitdaging⟩\nTijdskader: ⟨tijd⟩\n\nRegels: stel 1 vraag per beurt, vat mijn antwoord kort samen, eindig met 3 opties (verdiepen/verbreden/afronden).",
+    "output": [
+      "Iteratieve dialoog"
+    ],
     "qc": [
       "Geen advies vermomd als vraag",
       "Samenvattingen kloppen",
@@ -627,7 +1483,11 @@
       "Voorbeeldantwoord"
     ],
     "inputFields": [
-      { "key": "rol", "label": "Rol/functie", "type": "text" },
+      {
+        "key": "rol",
+        "label": "Rol/functie",
+        "type": "text"
+      },
       {
         "key": "context",
         "label": "Context (sollicitatie/media/klantpitch)",
@@ -644,8 +1504,10 @@
         "type": "text"
       }
     ],
-    "prompt": "Simuleer een interview voor ⟨rol⟩.\nContext: ⟨context⟩\nTone: ⟨tone⟩\nFocusthema’s: ⟨themas⟩\n\nRegels:\n- Stel telkens 1 vraag\n- Wacht op mijn antwoord\n- Geef daarna feedback (1 sterk, 1 verbeterpunt) + voorbeeldantwoord",
-    "output": ["Gesimuleerde interviewflow"],
+    "prompt": "Simuleer een interview voor ⟨rol⟩.\nContext: ⟨context⟩\nTone: ⟨tone⟩\nFocusthema’s: ⟨themas⟩\n\nRegels: stel telkens 1 vraag, wacht op mijn antwoord, geef daarna feedback (1 sterk, 1 verbeterpunt) + voorbeeldantwoord.",
+    "output": [
+      "Gesimuleerde interviewflow"
+    ],
     "qc": [
       "Vragen rolrelevant",
       "Feedback constructief",
@@ -660,33 +1522,55 @@
     "deliver": [
       "Schema 4 weken (~3u/week)",
       "Per week: theorie, oefening, output, evaluatie",
-      "Bronnen (boeken/video/oefenprojecten)"
+      "Bronnen"
     ],
     "inputFields": [
-      { "key": "skill", "label": "Skill", "type": "text" },
+      {
+        "key": "skill",
+        "label": "Skill",
+        "type": "text"
+      },
       {
         "key": "niveau",
         "label": "Startniveau (beginner/intermediate/gevorderd)",
         "type": "text"
       },
-      { "key": "tijdpw", "label": "Beschikbare tijd per week", "type": "text" },
+      {
+        "key": "tijdpw",
+        "label": "Beschikbare tijd per week",
+        "type": "text"
+      },
       {
         "key": "vormen",
         "label": "Voorkeursvormen (lezen/video/doen)",
         "type": "text"
       },
-      { "key": "doel", "label": "Doel na 4 weken", "type": "text" }
+      {
+        "key": "doel",
+        "label": "Doel na 4 weken",
+        "type": "text"
+      }
     ],
-    "prompt": "Ontwerp een 4-weken leerpad voor ⟨skill⟩.\nStartniveau: ⟨niveau⟩\nTijd/week: ⟨tijdpw⟩\nVoorkeursvormen: ⟨vormen⟩\nDoel: ⟨doel⟩\n\nLever per week:\n- Theorie\n- Oefening\n- Output (deliverable)\n- Evaluatiecriteria\n+ Suggesties voor bronnen",
-    "output": ["Schema per week met bullets"],
-    "qc": ["Realistisch qua tijd", "Progressieve opbouw", "Evaluatie concreet"]
+    "prompt": "Ontwerp een 4-weken leerpad voor ⟨skill⟩.\nStartniveau: ⟨niveau⟩\nTijd/week: ⟨tijdpw⟩\nVoorkeursvormen: ⟨vormen⟩\nDoel: ⟨doel⟩\n\nLever per week: theorie, oefening, output en evaluatiecriteria + bronnen.",
+    "output": [
+      "Schema per week met bullets"
+    ],
+    "qc": [
+      "Realistisch qua tijd",
+      "Progressieve opbouw",
+      "Evaluatie concreet"
+    ]
   },
   {
     "id": "9-4",
     "chapter": "9 · Leren, Coaching & Mentorschap",
     "title": "Reflectie-ritueel (dagstart & dag-einde)",
     "when": "Als je dagelijkse focus en terugblik wilt structureren.",
-    "deliver": ["5 dagstart-checks", "5 dag-eindvragen", "Compact en meetbaar"],
+    "deliver": [
+      "5 dagstart-checks",
+      "5 dag-eindvragen",
+      "Compact en meetbaar"
+    ],
     "inputFields": [
       {
         "key": "doel",
@@ -704,9 +1588,15 @@
         "type": "text"
       }
     ],
-    "prompt": "Maak een dagstart-checklist en dag-eind-reflectie gericht op ⟨doel⟩.\nTone: ⟨tone⟩\nTijdsbesteding: ⟨tijd⟩\n\nLever:\n- 5 ochtend-checks (actiegericht)\n- 5 avond-reflecties (kort, meetbaar)",
-    "output": ["2 lijsten met 5 items"],
-    "qc": ["Checks actiegericht", "Reflecties concreet", "Past binnen tijd"]
+    "prompt": "Maak een dagstart-checklist en dag-eind-reflectie gericht op ⟨doel⟩.\nTone: ⟨tone⟩\nTijdsbesteding: ⟨tijd⟩\n\nLever: 5 ochtend-checks (actiegericht) en 5 avond-reflecties (kort, meetbaar).",
+    "output": [
+      "2 lijsten met 5 items"
+    ],
+    "qc": [
+      "Checks actiegericht",
+      "Reflecties concreet",
+      "Past binnen tijd"
+    ]
   },
   {
     "id": "9-5",
@@ -719,89 +1609,164 @@
       "Mini-beloningen per commitment"
     ],
     "inputFields": [
-      { "key": "doelen", "label": "Weekdoelen (lijst)", "type": "textarea" },
+      {
+        "key": "doelen",
+        "label": "Weekdoelen (lijst)",
+        "type": "textarea"
+      },
       {
         "key": "prioriteit",
         "label": "Prioriteit (hoog/medium/laag)",
         "type": "text"
       },
-      { "key": "tijd", "label": "Beschikbare tijd", "type": "text" },
+      {
+        "key": "tijd",
+        "label": "Beschikbare tijd",
+        "type": "text"
+      },
       {
         "key": "beloningen",
         "label": "Beloningen die je motiveren",
         "type": "textarea"
       }
     ],
-    "prompt": "Zet mijn weekdoelen om in commitments.\nDoelen: ⟨doelen⟩\nPrioriteit: ⟨prioriteit⟩\nTijd: ⟨tijd⟩\nBeloningen: ⟨beloningen⟩\n\nLever:\n1) Commitmentlijst (SMART geformuleerd)\n2) Deadlines en meetpunten\n3) Mini-beloning per commitment",
-    "output": ["Commitmentlijst met deadlines en beloningen"],
-    "qc": ["SMART geformuleerd", "Max 5 commitments", "Beloningen passend"]
+    "prompt": "Zet mijn weekdoelen om in commitments.\nDoelen: ⟨doelen⟩\nPrioriteit: ⟨prioriteit⟩\nTijd: ⟨tijd⟩\nBeloningen: ⟨beloningen⟩\n\nLever: 1) Commitmentlijst (SMART geformuleerd) 2) Deadlines en meetpunten 3) Mini-beloning per commitment",
+    "output": [
+      "Commitmentlijst met deadlines en beloningen"
+    ],
+    "qc": [
+      "SMART geformuleerd",
+      "Max 5 commitments",
+      "Beloningen passend"
+    ]
   },
   {
     "id": "10-1",
     "chapter": "10 · Code, Data & Tools",
     "title": "Code-uitleg",
     "when": "Wanneer je snel wilt begrijpen wat een stuk code doet.",
-    "deliver": ["Eenvoudige uitleg van code", "Voorbeeld van werking"],
+    "deliver": [
+      "Eenvoudige uitleg van code",
+      "Voorbeeld van werking"
+    ],
     "inputFields": [
-      { "key": "code", "label": "Plak hier je code", "type": "textarea" }
+      {
+        "key": "code",
+        "label": "Plak hier je code",
+        "type": "textarea"
+      }
     ],
     "prompt": "Leg in eenvoudige taal uit wat deze code doet:\n\n⟨code⟩\n\nGeef ook een voorbeeld van de werking.",
-    "output": ["Eenvoudige uitleg", "Voorbeeld"],
-    "qc": ["Correct", "Begrijpelijk voor niet-expert"]
+    "output": [
+      "Eenvoudige uitleg",
+      "Voorbeeld"
+    ],
+    "qc": [
+      "Correct",
+      "Begrijpelijk voor niet-expert"
+    ]
   },
   {
     "id": "10-2",
     "chapter": "10 · Code, Data & Tools",
     "title": "Bugfix suggesties",
     "when": "Als je een foutmelding wilt begrijpen en oplossen.",
-    "deliver": ["Analyse foutmelding", "3 mogelijke fixes"],
+    "deliver": [
+      "Analyse foutmelding",
+      "3 mogelijke fixes"
+    ],
     "inputFields": [
-      { "key": "code", "label": "Codefragment", "type": "textarea" },
-      { "key": "error", "label": "Foutmelding", "type": "textarea" }
+      {
+        "key": "code",
+        "label": "Codefragment",
+        "type": "textarea"
+      },
+      {
+        "key": "error",
+        "label": "Foutmelding",
+        "type": "textarea"
+      }
     ],
     "prompt": "Analyseer de foutmelding ⟨error⟩ in deze code:\n\n⟨code⟩\n\nGeef 3 mogelijke oorzaken + fixes.",
-    "output": ["Oorzaak + fix suggesties"],
-    "qc": ["Fixes concreet", "Reproduceerbaar"]
+    "output": [
+      "Oorzaak + fix suggesties"
+    ],
+    "qc": [
+      "Fixes concreet",
+      "Reproduceerbaar"
+    ]
   },
   {
     "id": "10-3",
     "chapter": "10 · Code, Data & Tools",
     "title": "Reguliere expressie generator",
     "when": "Wanneer je snel een regex nodig hebt.",
-    "deliver": ["Reguliere expressie", "Uitleg"],
+    "deliver": [
+      "Reguliere expressie",
+      "Uitleg"
+    ],
     "inputFields": [
-      { "key": "patroon", "label": "Wat wil je matchen?", "type": "text" }
+      {
+        "key": "patroon",
+        "label": "Wat wil je matchen?",
+        "type": "text"
+      }
     ],
     "prompt": "Genereer een reguliere expressie voor ⟨patroon⟩ en leg uit hoe die werkt.",
-    "output": ["Regex", "Uitleg"],
-    "qc": ["Regex werkt", "Uitleg klopt"]
+    "output": [
+      "Regex",
+      "Uitleg"
+    ],
+    "qc": [
+      "Regex werkt",
+      "Uitleg klopt"
+    ]
   },
   {
     "id": "10-4",
     "chapter": "10 · Code, Data & Tools",
     "title": "SQL-query’s schrijven",
     "when": "Als je SQL-queries nodig hebt voor je database.",
-    "deliver": ["SQL-query", "Korte uitleg"],
+    "deliver": [
+      "SQL-query",
+      "Korte uitleg"
+    ],
     "inputFields": [
       {
         "key": "dbstructuur",
         "label": "Beschrijving database-tabellen",
         "type": "textarea"
       },
-      { "key": "vraag", "label": "Wat wil je ophalen?", "type": "text" }
+      {
+        "key": "vraag",
+        "label": "Wat wil je ophalen?",
+        "type": "text"
+      }
     ],
     "prompt": "Schrijf een SQL-query voor deze database:\n⟨dbstructuur⟩\n\nVraag: ⟨vraag⟩",
-    "output": ["SQL-query", "Uitleg"],
-    "qc": ["Syntax correct", "Query levert gevraagde data"]
+    "output": [
+      "SQL-query",
+      "Uitleg"
+    ],
+    "qc": [
+      "Syntax correct",
+      "Query levert gevraagde data"
+    ]
   },
   {
     "id": "10-5",
     "chapter": "10 · Code, Data & Tools",
     "title": "API-aanroep voorbeeld",
     "when": "Wanneer je wilt leren hoe je een API aanroept.",
-    "deliver": ["Voorbeeldcode in gekozen taal"],
+    "deliver": [
+      "Voorbeeldcode in gekozen taal"
+    ],
     "inputFields": [
-      { "key": "endpoint", "label": "API-endpoint", "type": "text" },
+      {
+        "key": "endpoint",
+        "label": "API-endpoint",
+        "type": "text"
+      },
       {
         "key": "methode",
         "label": "HTTP-methode (GET/POST/...)",
@@ -814,78 +1779,146 @@
       }
     ],
     "prompt": "Maak voorbeeldcode in ⟨taal⟩ voor een ⟨methode⟩ request naar ⟨endpoint⟩.",
-    "output": ["Voorbeeldcode"],
-    "qc": ["Code correct", "Voorbeeld werkt in taal"]
+    "output": [
+      "Voorbeeldcode"
+    ],
+    "qc": [
+      "Code correct",
+      "Voorbeeld werkt in taal"
+    ]
   },
   {
     "id": "11-1",
     "chapter": "11 · Meta & Promptcraft",
     "title": "Prompt verbeteren",
     "when": "Als je niet tevreden bent met een antwoord.",
-    "deliver": ["Verbeterde prompt", "Uitleg waarom beter"],
+    "deliver": [
+      "Verbeterde prompt",
+      "Uitleg waarom beter"
+    ],
     "inputFields": [
       {
         "key": "prompt",
         "label": "Oorspronkelijke prompt",
         "type": "textarea"
       },
-      { "key": "probleem", "label": "Wat ging er mis?", "type": "text" }
+      {
+        "key": "probleem",
+        "label": "Wat ging er mis?",
+        "type": "text"
+      }
     ],
     "prompt": "Verbeter deze prompt:\n\n⟨prompt⟩\n\nProbleem: ⟨probleem⟩",
-    "output": ["Nieuwe prompt", "Uitleg"],
-    "qc": ["Probleem opgelost", "Prompt duidelijker"]
+    "output": [
+      "Nieuwe prompt",
+      "Uitleg"
+    ],
+    "qc": [
+      "Probleem opgelost",
+      "Prompt duidelijker"
+    ]
   },
   {
     "id": "11-2",
     "chapter": "11 · Meta & Promptcraft",
     "title": "Prompt-variaties",
     "when": "Als je meerdere invalshoeken wilt proberen.",
-    "deliver": ["3–5 alternatieve prompts"],
+    "deliver": [
+      "3–5 alternatieve prompts"
+    ],
     "inputFields": [
-      { "key": "prompt", "label": "Originele prompt", "type": "textarea" }
+      {
+        "key": "prompt",
+        "label": "Originele prompt",
+        "type": "textarea"
+      }
     ],
     "prompt": "Maak 5 alternatieve variaties van deze prompt:\n\n⟨prompt⟩",
-    "output": ["Variaties"],
-    "qc": ["Variaties verschillend", "Allemaal bruikbaar"]
+    "output": [
+      "Variaties"
+    ],
+    "qc": [
+      "Variaties verschillend",
+      "Allemaal bruikbaar"
+    ]
   },
   {
     "id": "11-3",
     "chapter": "11 · Meta & Promptcraft",
     "title": "Prompt-structuur uitleggen",
     "when": "Wanneer je wilt leren hoe een prompt werkt.",
-    "deliver": ["Analyse onderdelen", "Tips voor verbetering"],
-    "inputFields": [{ "key": "prompt", "label": "Prompt", "type": "textarea" }],
+    "deliver": [
+      "Analyse onderdelen",
+      "Tips voor verbetering"
+    ],
+    "inputFields": [
+      {
+        "key": "prompt",
+        "label": "Prompt",
+        "type": "textarea"
+      }
+    ],
     "prompt": "Leg uit hoe deze prompt is opgebouwd:\n\n⟨prompt⟩\n\nGeef daarna 3 tips om hem sterker te maken.",
-    "output": ["Analyse", "Tips"],
-    "qc": ["Analyse correct", "Tips concreet"]
+    "output": [
+      "Analyse",
+      "Tips"
+    ],
+    "qc": [
+      "Analyse correct",
+      "Tips concreet"
+    ]
   },
   {
     "id": "11-4",
     "chapter": "11 · Meta & Promptcraft",
     "title": "Roleplay prompt",
     "when": "Als je ChatGPT een specifieke rol wilt geven.",
-    "deliver": ["Roleplay-prompt op maat"],
+    "deliver": [
+      "Roleplay-prompt op maat"
+    ],
     "inputFields": [
       {
         "key": "rol",
         "label": "Rol (coach, docent, advocaat, ...)",
         "type": "text"
       },
-      { "key": "context", "label": "Context", "type": "textarea" }
+      {
+        "key": "context",
+        "label": "Context",
+        "type": "textarea"
+      }
     ],
     "prompt": "Schrijf een prompt om ChatGPT de rol van ⟨rol⟩ te laten spelen in deze context:\n\n⟨context⟩",
-    "output": ["Roleplay-prompt"],
-    "qc": ["Rol duidelijk", "Context opgenomen"]
+    "output": [
+      "Roleplay-prompt"
+    ],
+    "qc": [
+      "Rol duidelijk",
+      "Context opgenomen"
+    ]
   },
   {
     "id": "11-5",
     "chapter": "11 · Meta & Promptcraft",
     "title": "Prompt-bundel",
     "when": "Als je een set prompts wilt voor 1 use case.",
-    "deliver": ["Set van 5 prompts in volgorde"],
-    "inputFields": [{ "key": "usecase", "label": "Use case", "type": "text" }],
+    "deliver": [
+      "Set van 5 prompts in volgorde"
+    ],
+    "inputFields": [
+      {
+        "key": "usecase",
+        "label": "Use case",
+        "type": "text"
+      }
+    ],
     "prompt": "Maak een bundel van 5 prompts die samen een workflow vormen rond ⟨usecase⟩.",
-    "output": ["Set van 5 prompts"],
-    "qc": ["Logische volgorde", "Set dekt hele use case"]
+    "output": [
+      "Set van 5 prompts"
+    ],
+    "qc": [
+      "Logische volgorde",
+      "Set dekt hele use case"
+    ]
   }
 ]
