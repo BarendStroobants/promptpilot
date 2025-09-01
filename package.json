@@ -1,0 +1,16 @@
+{
+  "name": "promptpilot-handbook",
+  "version": "1.0.0",
+  "description": "PromptPilot - Power Prompts Handbook for ChatGPT",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "serve": "npx serve ."
+  },
+  "keywords": ["prompts", "chatgpt", "ai", "handbook"],
+  "author": "PromptPilot",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.2.1"
+  }
+}

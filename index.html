@@ -1,0 +1,1062 @@
+<html lang="nl"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PromptPilot – Power Prompts Handbook</title>
+  <style>
+    :root{
+      --accent:#6A1B9A; --bg:#faf8fc; --ink:#1f1f1f; --muted:#6b6b6b; --card:#ffffff; --soft:#eee; --code:#f3f3f3;
+      --radius:14px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+    header{position:sticky;top:0;background:linear-gradient(180deg, #ffffffcc, #ffffffcc), var(--bg);-webkit-backdrop-filter:saturate(150%) blur(6px);backdrop-filter:saturate(150%) blur(6px);border-bottom:1px solid #e9e5ef;z-index:10}
+    .wrap{max-width:1100px;margin:0 auto;padding:16px 20px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:28px;height:28px;border-radius:8px;background:var(--accent);display:inline-block}
+    h1{font-size:20px;margin:0}
+    .sub{color:var(--muted);font-size:13px}
+    .toolbar{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
+    input[type="search"], select{padding:10px 12px;border:1px solid #e2ddeb;border-radius:10px;background:white;min-width:220px}
+    main{display:grid;grid-template-columns:290px 1fr;gap:16px;align-items:start}
+    @media (max-width: 960px){main{grid-template-columns:1fr}}
+    .side,.content{padding:16px}
+    .side{position:sticky;top:82px;background:var(--card);border:1px solid #ece7f2;border-radius:var(--radius);max-height:calc(100dvh - 100px);overflow:auto}
+    .content{background:var(--card);border:1px solid #ece7f2;border-radius:var(--radius)}
+    .chapter{padding:10px 12px;border-radius:10px;margin:6px 6px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;border:1px solid transparent}
+    .chapter:hover{background:#f7f2fb}
+    .chapter.active{background:#f4e9fb;border-color:#ead9f8}
+    .count{color:var(--muted);font-size:12px}
+    .tmpl{border:1px solid #eee;border-radius:12px;padding:14px;margin-bottom:14px;background:#fff}
+    .tmpl h3{margin:0 0 6px 0;font-size:16px}
+    .meta{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 12px}
+    .pill{font-size:12px;color:#5a2b7a;background:#f4e9fb;border:1px solid #ead9f8;padding:4px 8px;border-radius:999px}
+    details{border:1px dashed #e7e1ec;border-radius:10px;padding:10px;background:#fcfbfe;margin:10px 0}
+    summary{cursor:pointer;font-weight:600}
+    .block{margin:8px 0}
+    .block b{color:#4a1d6e}
+    .code{background:var(--code);border:1px solid #e5e5e5;border-radius:10px;padding:10px;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;font-size:13px;white-space:pre-wrap}
+    .btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    button{border:1px solid #e2ddeb;background:white;padding:10px 12px;border-radius:10px;cursor:pointer}
+    button.primary{background:var(--accent);color:#fff;border-color:#5d1388}
+    .form{display:grid;gap:8px;margin-top:8px}
+    .form label{font-size:12px;color:#6b5c78}
+    .form textarea,.form input,.form select{width:100%;padding:10px;border:1px solid #e2ddeb;border-radius:10px;background:white}
+    .hr{height:1px;background:#eee;margin:14px 0}
+    .empty{color:#888;padding:20px 10px}
+    .footer{color:#8a8a8a;font-size:12px;margin-top:6px}
+  </style>
+<script async="" src="https://bolt.new/badge.js?s=258dcbfa-895c-4dd7-8da8-8f335177e533"></script><meta id="ConnectiveDocSignExtentionInstalled" name="ConnectiveDocSignExtentionInstalled" data-extension-version="1.0.7"></head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">
+      <span class="logo"></span>
+      <div>
+        <h1>PromptPilot</h1>
+        <div class="sub">Handbook to team up with ChatGPT · 60 templates</div>
+      </div>
+    </div>
+    <div class="toolbar">
+      <input id="q" type="search" placeholder="Zoek op titel, hoofdstuk of woorden…">
+      <select id="chapterFilter"><option value="">Alle hoofdstukken</option><option>1 · Strategie</option><option>2 · Schrijven &amp; Redactie</option><option>3 · Onderzoek</option><option>4 · Product/UX</option><option>5 · Data</option><option>6 · Code/Dev</option><option>7 · Marketing</option><option>8 · Sales/Support</option><option>10 · Vertalen</option></select>
+      <button id="exportMd">Export naar Markdown</button>
+      <button id="downloadProject">Download Project</button>
+      <button id="reset">Reset sessie</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <aside class="side">
+    <div id="chaptersList"><div class="chapter " data-c="1 · Strategie">
+      <div>1 · Strategie</div>
+      <div class="count">2</div>
+    </div><div class="chapter " data-c="2 · Schrijven &amp; Redactie">
+      <div>2 · Schrijven &amp; Redactie</div>
+      <div class="count">1</div>
+    </div><div class="chapter " data-c="3 · Onderzoek">
+      <div>3 · Onderzoek</div>
+      <div class="count">1</div>
+    </div><div class="chapter " data-c="4 · Product/UX">
+      <div>4 · Product/UX</div>
+      <div class="count">1</div>
+    </div><div class="chapter " data-c="5 · Data">
+      <div>5 · Data</div>
+      <div class="count">1</div>
+    </div><div class="chapter " data-c="6 · Code/Dev">
+      <div>6 · Code/Dev</div>
+      <div class="count">1</div>
+    </div><div class="chapter " data-c="7 · Marketing">
+      <div>7 · Marketing</div>
+      <div class="count">1</div>
+    </div><div class="chapter " data-c="8 · Sales/Support">
+      <div>8 · Sales/Support</div>
+      <div class="count">1</div>
+    </div><div class="chapter " data-c="10 · Vertalen">
+      <div>10 · Vertalen</div>
+      <div class="count">1</div>
+    </div></div>
+  </aside>
+
+  <section class="content">
+    <div id="results">
+  <article class="tmpl" id="t-1-1">
+    <h3>Scenariovergelijking</h3>
+    <div class="meta">
+      <span class="pill">1 · Strategie</span>
+    </div>
+
+    <div class="block"><b>🟢 Wanneer gebruiken</b><br>Als je verschillende mogelijke toekomsten wilt verkennen en de implicaties per scenario wilt begrijpen.</div>
+    <div class="block"><b>📦 Wat ik oplever</b><br><ul><li>3 scenario's (optimistisch, realistisch, pessimistisch)</li><li>Kernimpact per scenario (mensen, middelen, tijdlijn)</li><li>Vergelijkende tabel</li></ul></div>
+
+    <details open="">
+      <summary>✍️ Jouw input (invullen voor auto-prompt)</summary>
+      <div class="form"><label>Besluit/plan</label><input data-id="1-1" data-key="besluit" type="text" value="" placeholder="Besluit/plan"><label>Tijdshorizon (bv. 3 mnd / 1 j / 5 j)</label><input data-id="1-1" data-key="horizon" type="text" value="" placeholder="Tijdshorizon (bv. 3 mnd / 1 j / 5 j)"><label>Belangrijke factoren (markt, budget, team, technologie)</label><textarea data-id="1-1" data-key="factoren" rows="4" placeholder="Belangrijke factoren (markt, budget, team, technologie)"></textarea><label>Focus (financieel, operationeel, menselijk…)</label><input data-id="1-1" data-key="focus" type="text" value="" placeholder="Focus (financieel, operationeel, menselijk…)"></div>
+    </details>
+
+    <div class="block"><b>💬 Prompt-sjabloon</b>
+      <pre class="code" id="code-1-1">Maak een scenariovergelijking voor ⟨besluit/plan⟩.
+Tijdshorizon: ⟨Besluit/plan⟩
+Factoren: ⟨Besluit/plan⟩
+Focus: ⟨Tijdshorizon (bv. 3 mnd / 1 j / 5 j)⟩
+
+Lever:
+1) Optimistisch scenario
+2) Realistisch scenario
+3) Pessimistisch scenario
++ Tabel: scenario | kernimpact | risico's | kansen</pre>
+      <div class="btns">
+        <button class="primary" data-action="copy" data-id="1-1">Kopieer prompt</button>
+        <button data-action="regen" data-id="1-1">Genereer prompt opnieuw</button>
+      </div>
+    </div>
+
+    <div class="hr"></div>
+
+    <div class="block"><b>📤 Verwachte output</b><br><pre class="code">- 3 scenario's in tekstvorm
+- Vergelijkende tabel</pre></div>
+    <div class="block"><b>✅ Kwaliteitscheck</b><br><pre class="code">- Scenario's duidelijk verschillend
+- Impact concreet en meetbaar
+- Risico's én kansen benoemd</pre></div>
+  </article>
+  <article class="tmpl" id="t-1-2">
+    <h3>Impact/Effort-matrix</h3>
+    <div class="meta">
+      <span class="pill">1 · Strategie</span>
+    </div>
+
+    <div class="block"><b>🟢 Wanneer gebruiken</b><br>Om prioriteiten te stellen tussen ideeën of projecten.</div>
+    <div class="block"><b>📦 Wat ik oplever</b><br><ul><li>Indeling 6–10 items in 4 kwadranten</li><li>Aanbevolen volgorde van aanpak</li></ul></div>
+
+    <details open="">
+      <summary>✍️ Jouw input (invullen voor auto-prompt)</summary>
+      <div class="form"><label>Items (lijst)</label><textarea data-id="1-2" data-key="items" rows="4" placeholder="Items (lijst)"></textarea><label>Impact-criteria</label><input data-id="1-2" data-key="impact" type="text" value="" placeholder="Impact-criteria"><label>Effort-criteria</label><input data-id="1-2" data-key="effort" type="text" value="" placeholder="Effort-criteria"><label>Context (strategie, product, marketing, intern…)</label><input data-id="1-2" data-key="context" type="text" value="" placeholder="Context (strategie, product, marketing, intern…)"></div>
+    </details>
+
+    <div class="block"><b>💬 Prompt-sjabloon</b>
+      <pre class="code" id="code-1-2">Maak een Impact/Effort-matrix voor ⟨Items (lijst)⟩.
+Impact-criteria: ⟨Items (lijst)⟩
+Effort-criteria: ⟨Items (lijst)⟩
+Context: ⟨Impact-criteria⟩
+
+Lever:
+- Matrix met 4 kwadranten
+- Lijst items per kwadrant
+- Aanbevolen volgorde</pre>
+      <div class="btns">
+        <button class="primary" data-action="copy" data-id="1-2">Kopieer prompt</button>
+        <button data-action="regen" data-id="1-2">Genereer prompt opnieuw</button>
+      </div>
+    </div>
+
+    <div class="hr"></div>
+
+    <div class="block"><b>📤 Verwachte output</b><br><pre class="code">- Matrix + lijst
+- Aanbevolen volgorde</pre></div>
+    <div class="block"><b>✅ Kwaliteitscheck</b><br><pre class="code">- Items verdeeld over meerdere kwadranten
+- Criteria correct toegepast
+- Volgorde logisch</pre></div>
+  </article>
+  <article class="tmpl" id="t-2-7">
+    <h3>Redactie met rubric</h3>
+    <div class="meta">
+      <span class="pill">2 · Schrijven &amp; Redactie</span>
+    </div>
+
+    <div class="block"><b>🟢 Wanneer gebruiken</b><br>Als je feedback wilt die gestructureerd is op vaste criteria.</div>
+    <div class="block"><b>📦 Wat ik oplever</b><br><ul><li>Beoordeling op 5 criteria</li><li>Score 1–5 per criterium</li><li>Concrete verbeterpunten</li></ul></div>
+
+    <details open="">
+      <summary>✍️ Jouw input (invullen voor auto-prompt)</summary>
+      <div class="form"><label>Tekst (concept/draft)</label><textarea data-id="2-7" data-key="tekst" rows="4" placeholder="Tekst (concept/draft)"></textarea><label>Doelpubliek</label><input data-id="2-7" data-key="publiek" type="text" value="" placeholder="Doelpubliek"><label>Doel (informeren/overtuigen…)</label><input data-id="2-7" data-key="doel" type="text" value="" placeholder="Doel (informeren/overtuigen…)"><label>Tone (zakelijk/warm/speels)</label><input data-id="2-7" data-key="tone" type="text" value="" placeholder="Tone (zakelijk/warm/speels)"></div>
+    </details>
+
+    <div class="block"><b>💬 Prompt-sjabloon</b>
+      <pre class="code" id="code-2-7">Geef redactie op onderstaande tekst volgens rubric.
+Tekst: ⟨Tekst (concept/draft)⟩
+Publiek: ⟨Tekst (concept/draft)⟩
+Doel: ⟨Tekst (concept/draft)⟩
+Tone: ⟨Doelpubliek⟩
+
+Lever:
+- Tabel met criteria: structuur, helderheid, toon, argumentatie, stijl (score 1–5)
+- 3 verbeterpunten per criterium
+- Suggestie herschreven paragraaf (kort voorbeeld)</pre>
+      <div class="btns">
+        <button class="primary" data-action="copy" data-id="2-7">Kopieer prompt</button>
+        <button data-action="regen" data-id="2-7">Genereer prompt opnieuw</button>
+      </div>
+    </div>
+
+    <div class="hr"></div>
+
+    <div class="block"><b>📤 Verwachte output</b><br><pre class="code">- Rubric-tabel
+- Verbeterpunten
+- Voorbeeld herschrijving</pre></div>
+    <div class="block"><b>✅ Kwaliteitscheck</b><br><pre class="code">- Scores ↔ feedback consistent
+- Verbeterpunten concreet
+- Voorbeeld illustratief</pre></div>
+  </article>
+  <article class="tmpl" id="t-3-13">
+    <h3>Methodische samenvatting</h3>
+    <div class="meta">
+      <span class="pill">3 · Onderzoek</span>
+    </div>
+
+    <div class="block"><b>🟢 Wanneer gebruiken</b><br>Om een lange studie/rapport samen te vatten naar methoden en resultaten.</div>
+    <div class="block"><b>📦 Wat ik oplever</b><br><ul><li>4 blokken: vraagstelling, methode, resultaten, beperkingen (≤300 woorden)</li></ul></div>
+
+    <details open="">
+      <summary>✍️ Jouw input (invullen voor auto-prompt)</summary>
+      <div class="form"><label>Originele tekst</label><textarea data-id="3-13" data-key="original" rows="4" placeholder="Originele tekst"></textarea><label>Doel (review/presentatie)</label><input data-id="3-13" data-key="doel" type="text" value="" placeholder="Doel (review/presentatie)"><label>Publiek</label><input data-id="3-13" data-key="publiek" type="text" value="" placeholder="Publiek"></div>
+    </details>
+
+    <div class="block"><b>💬 Prompt-sjabloon</b>
+      <pre class="code" id="code-3-13">Vat onderstaande tekst samen in 4 blokken: vraagstelling, methode, resultaten, beperkingen.
+Doel: ⟨Originele tekst⟩
+Publiek: ⟨Originele tekst⟩
+
+Tekst:
+⟨Originele tekst⟩</pre>
+      <div class="btns">
+        <button class="primary" data-action="copy" data-id="3-13">Kopieer prompt</button>
+        <button data-action="regen" data-id="3-13">Genereer prompt opnieuw</button>
+      </div>
+    </div>
+
+    <div class="hr"></div>
+
+    <div class="block"><b>📤 Verwachte output</b><br><pre class="code">- 4 blokken samenvatting</pre></div>
+    <div class="block"><b>✅ Kwaliteitscheck</b><br><pre class="code">- Geen interpretatie toegevoegd
+- Resultaten correct
+- Beperkingen benoemd</pre></div>
+  </article>
+  <article class="tmpl" id="t-4-17">
+    <h3>Feature slicing (MVP/MMP/Delighter)</h3>
+    <div class="meta">
+      <span class="pill">4 · Product/UX</span>
+    </div>
+
+    <div class="block"><b>🟢 Wanneer gebruiken</b><br>Om features te prioriteren in lagen van minimale levensvatbaarheid.</div>
+    <div class="block"><b>📦 Wat ik oplever</b><br><ul><li>Indeling in MVP/MMP/Delighter</li><li>Motivatie per feature</li><li>Roadmapvoorstel</li></ul></div>
+
+    <details open="">
+      <summary>✍️ Jouw input (invullen voor auto-prompt)</summary>
+      <div class="form"><label>Featurelijst</label><textarea data-id="4-17" data-key="features" rows="4" placeholder="Featurelijst"></textarea><label>Doel (MVP/roadmap/backlog)</label><input data-id="4-17" data-key="doel" type="text" value="" placeholder="Doel (MVP/roadmap/backlog)"><label>Context (startup/corporate/prototype)</label><input data-id="4-17" data-key="context" type="text" value="" placeholder="Context (startup/corporate/prototype)"></div>
+    </details>
+
+    <div class="block"><b>💬 Prompt-sjabloon</b>
+      <pre class="code" id="code-4-17">Deel onderstaande features in:
+- MVP (minimaal nodig om te lanceren)
+- MMP (markt-waardig)
+- Delighters (extra's)
+
+Features: ⟨Featurelijst⟩
+Doel: ⟨Featurelijst⟩
+Context: ⟨Featurelijst⟩
+
+Lever:
+1) Indeling per categorie
+2) Motivatie per feature
+3) Roadmap (fasen)</pre>
+      <div class="btns">
+        <button class="primary" data-action="copy" data-id="4-17">Kopieer prompt</button>
+        <button data-action="regen" data-id="4-17">Genereer prompt opnieuw</button>
+      </div>
+    </div>
+
+    <div class="hr"></div>
+
+    <div class="block"><b>📤 Verwachte output</b><br><pre class="code">- Categorie-indeling
+- Roadmap in fasen</pre></div>
+    <div class="block"><b>✅ Kwaliteitscheck</b><br><pre class="code">- MVP echt minimaal
+- Motivaties logisch
+- Roadmap haalbaar</pre></div>
+  </article>
+  <article class="tmpl" id="t-5-22">
+    <h3>Experiment-ontwerp</h3>
+    <div class="meta">
+      <span class="pill">5 · Data</span>
+    </div>
+
+    <div class="block"><b>🟢 Wanneer gebruiken</b><br>Als je hypotheses wil valideren via A/B-tests of pilots.</div>
+    <div class="block"><b>📦 Wat ik oplever</b><br><ul><li>3 experimenten met hypothese, metric, doelgroep, sample, stopcriteria</li><li>Risico's + mitigaties</li></ul></div>
+
+    <details open="">
+      <summary>✍️ Jouw input (invullen voor auto-prompt)</summary>
+      <div class="form"><label>Doelstelling</label><input data-id="5-22" data-key="doel" type="text" value="" placeholder="Doelstelling"><label>Hypothesen (bulletlijst)</label><textarea data-id="5-22" data-key="hypo" rows="4" placeholder="Hypothesen (bulletlijst)"></textarea><label>Doelgroep/segment</label><input data-id="5-22" data-key="segment" type="text" value="" placeholder="Doelgroep/segment"><label>Beschikbare traffic/sample size</label><input data-id="5-22" data-key="sample" type="text" value="" placeholder="Beschikbare traffic/sample size"><label>Constraints (budget/tijd/ethiek)</label><input data-id="5-22" data-key="constraints" type="text" value="" placeholder="Constraints (budget/tijd/ethiek)"></div>
+    </details>
+
+    <div class="block"><b>💬 Prompt-sjabloon</b>
+      <pre class="code" id="code-5-22">Ontwerp 3 experimenten om ⟨doelstelling⟩ te toetsen.
+Hypothesen: ⟨Doelstelling⟩
+Doelgroep: ⟨Doelstelling⟩
+Traffic/sample: ⟨Doelstelling⟩
+Constraints: ⟨Hypothesen (bulletlijst)⟩
+
+Lever per experiment:
+- Hypothese (als X, dan Y, meetbaar via Z)
+- Meetmethode + metric
+- Segmentatie
+- Sample-ruwte
+- Stopcriterium
+- Risico's + mitigaties</pre>
+      <div class="btns">
+        <button class="primary" data-action="copy" data-id="5-22">Kopieer prompt</button>
+        <button data-action="regen" data-id="5-22">Genereer prompt opnieuw</button>
+      </div>
+    </div>
+
+    <div class="hr"></div>
+
+    <div class="block"><b>📤 Verwachte output</b><br><pre class="code">- 3 experimenten met velden</pre></div>
+    <div class="block"><b>✅ Kwaliteitscheck</b><br><pre class="code">- Hypothesen falsifieerbaar
+- Metrics beïnvloedbaar
+- Stopcriteria objectief</pre></div>
+  </article>
+  <article class="tmpl" id="t-6-26">
+    <h3>Mini-scope implementatie</h3>
+    <div class="meta">
+      <span class="pill">6 · Code/Dev</span>
+    </div>
+
+    <div class="block"><b>🟢 Wanneer gebruiken</b><br>Voor kleine features of POC's met minimale setup.</div>
+    <div class="block"><b>📦 Wat ik oplever</b><br><ul><li>Bestandsstructuur</li><li>Kerncode (MVP)</li><li>3 testgevallen</li><li>Korte README</li></ul></div>
+
+    <details open="">
+      <summary>✍️ Jouw input (invullen voor auto-prompt)</summary>
+      <div class="form"><label>Stack (bv. Python+FastAPI / React+Vite)</label><input data-id="6-26" data-key="stack" type="text" value="" placeholder="Stack (bv. Python+FastAPI / React+Vite)"><label>Taak/feature</label><input data-id="6-26" data-key="task" type="text" value="" placeholder="Taak/feature"><label>Randvoorwaarden (perf/security/libs)</label><textarea data-id="6-26" data-key="reqs" rows="4" placeholder="Randvoorwaarden (perf/security/libs)"></textarea><label>Deployment (lokaal/cloud/container)</label><input data-id="6-26" data-key="deploy" type="text" value="" placeholder="Deployment (lokaal/cloud/container)"></div>
+    </details>
+
+    <div class="block"><b>💬 Prompt-sjabloon</b>
+      <pre class="code" id="code-6-26">Je bent senior developer. Bouw een minimale implementatie voor ⟨taak/feature⟩.
+Stack: ⟨Stack (bv. Python+FastAPI / React+Vite)⟩
+Randvoorwaarden: ⟨Stack (bv. Python+FastAPI / React+Vite)⟩
+Deployment: ⟨Taak/feature⟩
+
+Lever:
+1) Bestandsstructuur
+2) Kerncode (werkende versie)
+3) 3 testgevallen
+4) Korte README met setup</pre>
+      <div class="btns">
+        <button class="primary" data-action="copy" data-id="6-26">Kopieer prompt</button>
+        <button data-action="regen" data-id="6-26">Genereer prompt opnieuw</button>
+      </div>
+    </div>
+
+    <div class="hr"></div>
+
+    <div class="block"><b>📤 Verwachte output</b><br><pre class="code">- Structuur + code + tests + README</pre></div>
+    <div class="block"><b>✅ Kwaliteitscheck</b><br><pre class="code">- Compileert/loopt zonder missing deps
+- Tests: happy+edge
+- README voldoende</pre></div>
+  </article>
+  <article class="tmpl" id="t-7-33">
+    <h3>Landingpage-skelet</h3>
+    <div class="meta">
+      <span class="pill">7 · Marketing</span>
+    </div>
+
+    <div class="block"><b>🟢 Wanneer gebruiken</b><br>Nieuwe landingspagina opzetten of verbeteren.</div>
+    <div class="block"><b>📦 Wat ik oplever</b><br><ul><li>Structuur: hero, probleem→oplossing, features→benefits, social proof, pricing, FAQ</li><li>Koppen/subkoppen + korte copy</li></ul></div>
+
+    <details open="">
+      <summary>✍️ Jouw input (invullen voor auto-prompt)</summary>
+      <div class="form"><label>Product/dienst</label><input data-id="7-33" data-key="product" type="text" value="" placeholder="Product/dienst"><label>Doelgroep</label><input data-id="7-33" data-key="audience" type="text" value="" placeholder="Doelgroep"><label>Primair doel (lead/signup/aankoop)</label><input data-id="7-33" data-key="goal" type="text" value="" placeholder="Primair doel (lead/signup/aankoop)"><label>Bewijs (cases/cijfers/testimonials)</label><textarea data-id="7-33" data-key="proof" rows="4" placeholder="Bewijs (cases/cijfers/testimonials)"></textarea><label>Tone (professioneel/warm/speels)</label><input data-id="7-33" data-key="tone" type="text" value="" placeholder="Tone (professioneel/warm/speels)"></div>
+    </details>
+
+    <div class="block"><b>💬 Prompt-sjabloon</b>
+      <pre class="code" id="code-7-33">Ontwerp een landingspagina voor ⟨product/dienst⟩.
+Doelgroep: ⟨Product/dienst⟩
+Primair doel: ⟨Product/dienst⟩
+Bewijs: ⟨Doelgroep⟩
+Tone: ⟨Doelgroep⟩
+
+Lever skelet met secties:
+- Hero (headline, sub, CTA)
+- Probleem→oplossing
+- Features→benefits
+- Social proof
+- Pricing
+- FAQ</pre>
+      <div class="btns">
+        <button class="primary" data-action="copy" data-id="7-33">Kopieer prompt</button>
+        <button data-action="regen" data-id="7-33">Genereer prompt opnieuw</button>
+      </div>
+    </div>
+
+    <div class="hr"></div>
+
+    <div class="block"><b>📤 Verwachte output</b><br><pre class="code">- Pagina-outline + copy per sectie</pre></div>
+    <div class="block"><b>✅ Kwaliteitscheck</b><br><pre class="code">- Hero helder + CTA zichtbaar
+- Benefits i.p.v. features
+- CTA's consistent</pre></div>
+  </article>
+  <article class="tmpl" id="t-8-39">
+    <h3>Succesplan 30-60-90</h3>
+    <div class="meta">
+      <span class="pill">8 · Sales/Support</span>
+    </div>
+
+    <div class="block"><b>🟢 Wanneer gebruiken</b><br>Voor customer success, onboarding of aftersales.</div>
+    <div class="block"><b>📦 Wat ik oplever</b><br><ul><li>Plan per fase</li><li>Deliverables per fase</li><li>Success metrics per fase</li></ul></div>
+
+    <details open="">
+      <summary>✍️ Jouw input (invullen voor auto-prompt)</summary>
+      <div class="form"><label>Klanttype (nieuw/enterprise/MKB)</label><input data-id="8-39" data-key="klant" type="text" value="" placeholder="Klanttype (nieuw/enterprise/MKB)"><label>Product/dienst</label><input data-id="8-39" data-key="product" type="text" value="" placeholder="Product/dienst"><label>Klantdoelen (ROI/adoptie/tevredenheid)</label><textarea data-id="8-39" data-key="doelen" rows="4" placeholder="Klantdoelen (ROI/adoptie/tevredenheid)"></textarea><label>Resources (team/tools/docs)</label><input data-id="8-39" data-key="resources" type="text" value="" placeholder="Resources (team/tools/docs)"></div>
+    </details>
+
+    <div class="block"><b>💬 Prompt-sjabloon</b>
+      <pre class="code" id="code-8-39">Maak een 30-60-90 dagen customer success-plan voor ⟨klanttype⟩.
+Product: ⟨Klanttype (nieuw/enterprise/MKB)⟩
+Klantdoelen: ⟨Klanttype (nieuw/enterprise/MKB)⟩
+Resources: ⟨Product/dienst⟩
+
+Lever per fase:
+- Acties
+- Deliverables
+- Success metrics</pre>
+      <div class="btns">
+        <button class="primary" data-action="copy" data-id="8-39">Kopieer prompt</button>
+        <button data-action="regen" data-id="8-39">Genereer prompt opnieuw</button>
+      </div>
+    </div>
+
+    <div class="hr"></div>
+
+    <div class="block"><b>📤 Verwachte output</b><br><pre class="code">- Tabel Fase | Acties | Deliverables | Metrics</pre></div>
+    <div class="block"><b>✅ Kwaliteitscheck</b><br><pre class="code">- Metrics meetbaar
+- Deliverables haalbaar
+- Acties concreet</pre></div>
+  </article>
+  <article class="tmpl" id="t-10-46">
+    <h3>Contextuele vertaling</h3>
+    <div class="meta">
+      <span class="pill">10 · Vertalen</span>
+    </div>
+
+    <div class="block"><b>🟢 Wanneer gebruiken</b><br>Meer dan woord-voor-woord vertaling: toon &amp; cultuur.</div>
+    <div class="block"><b>📦 Wat ik oplever</b><br><ul><li>Vertaling</li><li>3 cultuur-specifieke aanpassingen</li><li>Korte toelichting</li></ul></div>
+
+    <details open="">
+      <summary>✍️ Jouw input (invullen voor auto-prompt)</summary>
+      <div class="form"><label>Brontekst</label><textarea data-id="10-46" data-key="source" rows="4" placeholder="Brontekst"></textarea><label>Doeltaal</label><input data-id="10-46" data-key="lang" type="text" value="" placeholder="Doeltaal"><label>Publiek</label><input data-id="10-46" data-key="publiek" type="text" value="" placeholder="Publiek"><label>Tone (zakelijk/warm/speels/technisch)</label><input data-id="10-46" data-key="tone" type="text" value="" placeholder="Tone (zakelijk/warm/speels/technisch)"><label>Doel (informeren/overtuigen/activeren)</label><input data-id="10-46" data-key="goal" type="text" value="" placeholder="Doel (informeren/overtuigen/activeren)"></div>
+    </details>
+
+    <div class="block"><b>💬 Prompt-sjabloon</b>
+      <pre class="code" id="code-10-46">Vertaal onderstaande tekst naar ⟨doeltaal⟩.
+Publiek: ⟨Brontekst⟩
+Tone: ⟨Brontekst⟩
+Doel: ⟨Doeltaal⟩
+
+Tekst:
+⟨Brontekst⟩
+
+Lever:
+1) Vertaling
+2) 3 cultuur-aanpassingen (voorbeelden/valuta/metaforen)
+3) Korte toelichting bij keuzes</pre>
+      <div class="btns">
+        <button class="primary" data-action="copy" data-id="10-46">Kopieer prompt</button>
+        <button data-action="regen" data-id="10-46">Genereer prompt opnieuw</button>
+      </div>
+    </div>
+
+    <div class="hr"></div>
+
+    <div class="block"><b>📤 Verwachte output</b><br><pre class="code">- Vertaling + 3 aanpassingen + motivatie</pre></div>
+    <div class="block"><b>✅ Kwaliteitscheck</b><br><pre class="code">- Leest natuurlijk
+- Aanpassingen relevant
+- Tone en doel behouden</pre></div>
+  </article></div>
+    <div class="footer">Tip: vul de velden onder "Jouw input" en klik dan op <b>Genereer prompt</b> of <b>Kopieer prompt</b>. Je keuzes worden lokaal opgeslagen.</div>
+  </section>
+</main>
+
+<script>
+/** ---- Dataset (voorproef: 10 templates). Voeg later de rest toe. ---- **/
+const templates = [
+  {
+    id:"1-1", chapter:"1 · Strategie", title:"Scenariovergelijking",
+    when:"Als je verschillende mogelijke toekomsten wilt verkennen en de implicaties per scenario wilt begrijpen.",
+    deliver:["3 scenario's (optimistisch, realistisch, pessimistisch)","Kernimpact per scenario (mensen, middelen, tijdlijn)","Vergelijkende tabel"],
+    inputFields:[
+      {key:"besluit", label:"Besluit/plan", type:"text"},
+      {key:"horizon", label:"Tijdshorizon (bv. 3 mnd / 1 j / 5 j)", type:"text"},
+      {key:"factoren", label:"Belangrijke factoren (markt, budget, team, technologie)", type:"textarea"},
+      {key:"focus", label:"Focus (financieel, operationeel, menselijk…)", type:"text"},
+    ],
+    prompt:`Maak een scenariovergelijking voor ⟨besluit/plan⟩.
+Tijdshorizon: ⟨…⟩
+Factoren: ⟨…⟩
+Focus: ⟨…⟩
+
+Lever:
+1) Optimistisch scenario
+2) Realistisch scenario
+3) Pessimistisch scenario
++ Tabel: scenario | kernimpact | risico's | kansen`,
+    output:["3 scenario's in tekstvorm","Vergelijkende tabel"],
+    qc:["Scenario's duidelijk verschillend","Impact concreet en meetbaar","Risico's én kansen benoemd"]
+  },
+  {
+    id:"1-2", chapter:"1 · Strategie", title:"Impact/Effort-matrix",
+    when:"Om prioriteiten te stellen tussen ideeën of projecten.",
+    deliver:["Indeling 6–10 items in 4 kwadranten","Aanbevolen volgorde van aanpak"],
+    inputFields:[
+      {key:"items", label:"Items (lijst)", type:"textarea"},
+      {key:"impact", label:"Impact-criteria", type:"text"},
+      {key:"effort", label:"Effort-criteria", type:"text"},
+      {key:"context", label:"Context (strategie, product, marketing, intern…)", type:"text"},
+    ],
+    prompt:`Maak een Impact/Effort-matrix voor ⟨items⟩.
+Impact-criteria: ⟨…⟩
+Effort-criteria: ⟨…⟩
+Context: ⟨…⟩
+
+Lever:
+- Matrix met 4 kwadranten
+- Lijst items per kwadrant
+- Aanbevolen volgorde`,
+    output:["Matrix + lijst","Aanbevolen volgorde"],
+    qc:["Items verdeeld over meerdere kwadranten","Criteria correct toegepast","Volgorde logisch"]
+  },
+  {
+    id:"2-7", chapter:"2 · Schrijven & Redactie", title:"Redactie met rubric",
+    when:"Als je feedback wilt die gestructureerd is op vaste criteria.",
+    deliver:["Beoordeling op 5 criteria","Score 1–5 per criterium","Concrete verbeterpunten"],
+    inputFields:[
+      {key:"tekst", label:"Tekst (concept/draft)", type:"textarea"},
+      {key:"publiek", label:"Doelpubliek", type:"text"},
+      {key:"doel", label:"Doel (informeren/overtuigen…)", type:"text"},
+      {key:"tone", label:"Tone (zakelijk/warm/speels)", type:"text"},
+    ],
+    prompt:`Geef redactie op onderstaande tekst volgens rubric.
+Tekst: ⟨plak⟩
+Publiek: ⟨…⟩
+Doel: ⟨…⟩
+Tone: ⟨…⟩
+
+Lever:
+- Tabel met criteria: structuur, helderheid, toon, argumentatie, stijl (score 1–5)
+- 3 verbeterpunten per criterium
+- Suggestie herschreven paragraaf (kort voorbeeld)`,
+    output:["Rubric-tabel","Verbeterpunten","Voorbeeld herschrijving"],
+    qc:["Scores ↔ feedback consistent","Verbeterpunten concreet","Voorbeeld illustratief"]
+  },
+  {
+    id:"3-13", chapter:"3 · Onderzoek", title:"Methodische samenvatting",
+    when:"Om een lange studie/rapport samen te vatten naar methoden en resultaten.",
+    deliver:["4 blokken: vraagstelling, methode, resultaten, beperkingen (≤300 woorden)"],
+    inputFields:[
+      {key:"original", label:"Originele tekst", type:"textarea"},
+      {key:"doel", label:"Doel (review/presentatie)", type:"text"},
+      {key:"publiek", label:"Publiek", type:"text"},
+    ],
+    prompt:`Vat onderstaande tekst samen in 4 blokken: vraagstelling, methode, resultaten, beperkingen.
+Doel: ⟨…⟩
+Publiek: ⟨…⟩
+
+Tekst:
+⟨plak⟩`,
+    output:["4 blokken samenvatting"],
+    qc:["Geen interpretatie toegevoegd","Resultaten correct","Beperkingen benoemd"]
+  },
+  {
+    id:"4-17", chapter:"4 · Product/UX", title:"Feature slicing (MVP/MMP/Delighter)",
+    when:"Om features te prioriteren in lagen van minimale levensvatbaarheid.",
+    deliver:["Indeling in MVP/MMP/Delighter","Motivatie per feature","Roadmapvoorstel"],
+    inputFields:[
+      {key:"features", label:"Featurelijst", type:"textarea"},
+      {key:"doel", label:"Doel (MVP/roadmap/backlog)", type:"text"},
+      {key:"context", label:"Context (startup/corporate/prototype)", type:"text"},
+    ],
+    prompt:`Deel onderstaande features in:
+- MVP (minimaal nodig om te lanceren)
+- MMP (markt-waardig)
+- Delighters (extra's)
+
+Features: ⟨lijst⟩
+Doel: ⟨…⟩
+Context: ⟨…⟩
+
+Lever:
+1) Indeling per categorie
+2) Motivatie per feature
+3) Roadmap (fasen)`,
+    output:["Categorie-indeling","Roadmap in fasen"],
+    qc:["MVP echt minimaal","Motivaties logisch","Roadmap haalbaar"]
+  },
+  {
+    id:"5-22", chapter:"5 · Data", title:"Experiment-ontwerp",
+    when:"Als je hypotheses wil valideren via A/B-tests of pilots.",
+    deliver:["3 experimenten met hypothese, metric, doelgroep, sample, stopcriteria","Risico's + mitigaties"],
+    inputFields:[
+      {key:"doel", label:"Doelstelling", type:"text"},
+      {key:"hypo", label:"Hypothesen (bulletlijst)", type:"textarea"},
+      {key:"segment", label:"Doelgroep/segment", type:"text"},
+      {key:"sample", label:"Beschikbare traffic/sample size", type:"text"},
+      {key:"constraints", label:"Constraints (budget/tijd/ethiek)", type:"text"},
+    ],
+    prompt:`Ontwerp 3 experimenten om ⟨doelstelling⟩ te toetsen.
+Hypothesen: ⟨lijst⟩
+Doelgroep: ⟨…⟩
+Traffic/sample: ⟨…⟩
+Constraints: ⟨…⟩
+
+Lever per experiment:
+- Hypothese (als X, dan Y, meetbaar via Z)
+- Meetmethode + metric
+- Segmentatie
+- Sample-ruwte
+- Stopcriterium
+- Risico's + mitigaties`,
+    output:["3 experimenten met velden"],
+    qc:["Hypothesen falsifieerbaar","Metrics beïnvloedbaar","Stopcriteria objectief"]
+  },
+  {
+    id:"6-26", chapter:"6 · Code/Dev", title:"Mini-scope implementatie",
+    when:"Voor kleine features of POC's met minimale setup.",
+    deliver:["Bestandsstructuur","Kerncode (MVP)","3 testgevallen","Korte README"],
+    inputFields:[
+      {key:"stack", label:"Stack (bv. Python+FastAPI / React+Vite)", type:"text"},
+      {key:"task", label:"Taak/feature", type:"text"},
+      {key:"reqs", label:"Randvoorwaarden (perf/security/libs)", type:"textarea"},
+      {key:"deploy", label:"Deployment (lokaal/cloud/container)", type:"text"},
+    ],
+    prompt:`Je bent senior developer. Bouw een minimale implementatie voor ⟨taak/feature⟩.
+Stack: ⟨…⟩
+Randvoorwaarden: ⟨…⟩
+Deployment: ⟨…⟩
+
+Lever:
+1) Bestandsstructuur
+2) Kerncode (werkende versie)
+3) 3 testgevallen
+4) Korte README met setup`,
+    output:["Structuur + code + tests + README"],
+    qc:["Compileert/loopt zonder missing deps","Tests: happy+edge","README voldoende"]
+  },
+  {
+    id:"7-33", chapter:"7 · Marketing", title:"Landingpage-skelet",
+    when:"Nieuwe landingspagina opzetten of verbeteren.",
+    deliver:["Structuur: hero, probleem→oplossing, features→benefits, social proof, pricing, FAQ","Koppen/subkoppen + korte copy"],
+    inputFields:[
+      {key:"product", label:"Product/dienst", type:"text"},
+      {key:"audience", label:"Doelgroep", type:"text"},
+      {key:"goal", label:"Primair doel (lead/signup/aankoop)", type:"text"},
+      {key:"proof", label:"Bewijs (cases/cijfers/testimonials)", type:"textarea"},
+      {key:"tone", label:"Tone (professioneel/warm/speels)", type:"text"},
+    ],
+    prompt:`Ontwerp een landingspagina voor ⟨product/dienst⟩.
+Doelgroep: ⟨…⟩
+Primair doel: ⟨…⟩
+Bewijs: ⟨…⟩
+Tone: ⟨…⟩
+
+Lever skelet met secties:
+- Hero (headline, sub, CTA)
+- Probleem→oplossing
+- Features→benefits
+- Social proof
+- Pricing
+- FAQ`,
+    output:["Pagina-outline + copy per sectie"],
+    qc:["Hero helder + CTA zichtbaar","Benefits i.p.v. features","CTA's consistent"]
+  },
+  {
+    id:"8-39", chapter:"8 · Sales/Support", title:"Succesplan 30-60-90",
+    when:"Voor customer success, onboarding of aftersales.",
+    deliver:["Plan per fase","Deliverables per fase","Success metrics per fase"],
+    inputFields:[
+      {key:"klant", label:"Klanttype (nieuw/enterprise/MKB)", type:"text"},
+      {key:"product", label:"Product/dienst", type:"text"},
+      {key:"doelen", label:"Klantdoelen (ROI/adoptie/tevredenheid)", type:"textarea"},
+      {key:"resources", label:"Resources (team/tools/docs)", type:"text"},
+    ],
+    prompt:`Maak een 30-60-90 dagen customer success-plan voor ⟨klanttype⟩.
+Product: ⟨…⟩
+Klantdoelen: ⟨…⟩
+Resources: ⟨…⟩
+
+Lever per fase:
+- Acties
+- Deliverables
+- Success metrics`,
+    output:["Tabel Fase | Acties | Deliverables | Metrics"],
+    qc:["Metrics meetbaar","Deliverables haalbaar","Acties concreet"]
+  },
+  {
+    id:"10-46", chapter:"10 · Vertalen", title:"Contextuele vertaling",
+    when:"Meer dan woord-voor-woord vertaling: toon & cultuur.",
+    deliver:["Vertaling","3 cultuur-specifieke aanpassingen","Korte toelichting"],
+    inputFields:[
+      {key:"source", label:"Brontekst", type:"textarea"},
+      {key:"lang", label:"Doeltaal", type:"text"},
+      {key:"publiek", label:"Publiek", type:"text"},
+      {key:"tone", label:"Tone (zakelijk/warm/speels/technisch)", type:"text"},
+      {key:"goal", label:"Doel (informeren/overtuigen/activeren)", type:"text"},
+    ],
+    prompt:`Vertaal onderstaande tekst naar ⟨doeltaal⟩.
+Publiek: ⟨…⟩
+Tone: ⟨…⟩
+Doel: ⟨…⟩
+
+Tekst:
+⟨plak⟩
+
+Lever:
+1) Vertaling
+2) 3 cultuur-aanpassingen (voorbeelden/valuta/metaforen)
+3) Korte toelichting bij keuzes`,
+    output:["Vertaling + 3 aanpassingen + motivatie"],
+    qc:["Leest natuurlijk","Aanpassingen relevant","Tone en doel behouden"]
+  }
+];
+
+/** ---- UI state ---- **/
+const $q = document.getElementById('q');
+const $chapterFilter = document.getElementById('chapterFilter');
+const $chaptersList = document.getElementById('chaptersList');
+const $results = document.getElementById('results');
+const $export = document.getElementById('exportMd');
+const $reset = document.getElementById('reset');
+
+const chapters = Array.from(new Set(templates.map(t=>t.chapter)));
+let activeChapter = null;
+
+/** ---- Init filters ---- **/
+function initFilters(){
+  $chapterFilter.innerHTML = `<option value="">Alle hoofdstukken</option>` + chapters.map(c=>`<option>${c}</option>`).join('');
+  renderChapters();
+  renderResults();
+}
+function renderChapters(){
+  $chaptersList.innerHTML = chapters.map(c=>{
+    const count = templates.filter(t=>t.chapter===c).length;
+    const act = c===activeChapter ? 'active':'';
+    return `<div class="chapter ${act}" data-c="${c}">
+      <div>${c}</div>
+      <div class="count">${count}</div>
+    </div>`;
+  }).join('');
+  $chaptersList.querySelectorAll('.chapter').forEach(n=>{
+    n.onclick = ()=>{ activeChapter = (activeChapter===n.dataset.c)? null : n.dataset.c; $chapterFilter.value = activeChapter||""; renderChapters(); renderResults(); };
+  });
+}
+$q.oninput = renderResults;
+$chapterFilter.onchange = ()=>{ activeChapter = $chapterFilter.value || null; renderChapters(); renderResults(); };
+
+/** ---- Render cards ---- **/
+function renderResults(){
+  const term = ($q.value||"").toLowerCase();
+  const list = templates.filter(t=>{
+    const matchTerm = !term || (t.title+t.when+t.chapter).toLowerCase().includes(term);
+    const matchChapter = !activeChapter || t.chapter===activeChapter;
+    return matchTerm && matchChapter;
+  });
+  if(!list.length){ $results.innerHTML = `<div class="empty">Geen resultaten… probeer andere zoektermen of hoofdstukfilter.</div>`; return; }
+  $results.innerHTML = list.map(t=>tmplCard(t)).join('');
+  attachCardHandlers();
+}
+
+/** ---- Card template ---- **/
+function tmplCard(t){
+  const deliver = t.deliver.map(x=>`- ${x}`).join('\n');
+  const output = (t.output||[]).map(x=>`- ${x}`).join('\n');
+  const qc = (t.qc||[]).map(x=>`- ${x}`).join('\n');
+  const form = (t.inputFields||[]).map(f=>{
+    const val = loadField(t.id,f.key);
+    if(f.type==='textarea'){
+      return `<label>${f.label}</label><textarea data-id="${t.id}" data-key="${f.key}" rows="4" placeholder="${f.label}">${val||''}</textarea>`;
+    }
+    return `<label>${f.label}</label><input data-id="${t.id}" data-key="${f.key}" type="text" value="${val||''}" placeholder="${f.label}" />`;
+  }).join('');
+  return `
+  <article class="tmpl" id="t-${t.id}">
+    <h3>${t.title}</h3>
+    <div class="meta">
+      <span class="pill">${t.chapter}</span>
+    </div>
+
+    <div class="block"><b>🟢 Wanneer gebruiken</b><br>${t.when}</div>
+    <div class="block"><b>📦 Wat ik oplever</b><br><ul>${t.deliver.map(d=>`<li>${d}</li>`).join('')}</ul></div>
+
+    <details open>
+      <summary>✍️ Jouw input (invullen voor auto-prompt)</summary>
+      <div class="form">${form||'<i>Geen velden nodig.</i>'}</div>
+    </details>
+
+    <div class="block"><b>💬 Prompt-sjabloon</b>
+      <pre class="code" id="code-${t.id}">${renderPrompt(t)}</pre>
+      <div class="btns">
+        <button class="primary" data-action="copy" data-id="${t.id}">Kopieer prompt</button>
+        <button data-action="regen" data-id="${t.id}">Genereer prompt opnieuw</button>
+      </div>
+    </div>
+
+    <div class="hr"></div>
+
+    <div class="block"><b>📤 Verwachte output</b><br><pre class="code">${output}</pre></div>
+    <div class="block"><b>✅ Kwaliteitscheck</b><br><pre class="code">${qc}</pre></div>
+  </article>`;
+}
+
+/** ---- Prompt rendering (met invulwaarden) ---- **/
+function renderPrompt(t){
+  let p = t.prompt;
+  const fields = t.inputFields||[];
+  for(const f of fields){
+    const v = loadField(t.id,f.key) || `⟨${f.label}⟩`;
+    // Vervang eerste ⟨…⟩ occurence(s) slim:
+    p = p.replace('⟨…⟩', v).replace('⟨…⟩', v).replace('⟨lijst⟩', v).replace('⟨plak⟩', v).replace(`⟨${f.key}⟩`, v);
+  }
+  // Specifieke placeholders:
+  p = p.replace('⟨besluit/plan⟩', (loadField(t.id,'besluit')||'⟨besluit/plan⟩'));
+  p = p.replace('⟨product/dienst⟩', (loadField(t.id,'product')||'⟨product/dienst⟩'));
+  p = p.replace('⟨taak/feature⟩', (loadField(t.id,'task')||'⟨taak/feature⟩'));
+  p = p.replace('⟨doelstelling⟩', (loadField(t.id,'doel')||'⟨doelstelling⟩'));
+  p = p.replace('⟨klanttype⟩', (loadField(t.id,'klant')||'⟨klanttype⟩'));
+  p = p.replace('⟨doeltaal⟩', (loadField(t.id,'lang')||'⟨doeltaal⟩'));
+  return p;
+}
+
+/** ---- Field state (LocalStorage) ---- **/
+const KEY = 'promptpilot:v1';
+function loadAll(){ try { return JSON.parse(localStorage.getItem(KEY))||{} } catch(e){ return {} } }
+function saveAll(state){ localStorage.setItem(KEY, JSON.stringify(state)); }
+function loadField(id,key){ const s = loadAll(); return s?.[id]?.[key]; }
+function setField(id,key,value){ const s = loadAll(); s[id]=s[id]||{}; s[id][key]=value; saveAll(s); }
+
+/** ---- Handlers ---- **/
+function attachCardHandlers(){
+  document.querySelectorAll('textarea[data-id], input[data-id]').forEach(el=>{
+    el.oninput = ()=>{
+      setField(el.dataset.id, el.dataset.key, el.value);
+      const pre = document.getElementById(`code-${el.dataset.id}`);
+      if(pre){ const t = templates.find(x=>x.id===el.dataset.id); pre.textContent = renderPrompt(t); }
+    };
+  });
+  document.querySelectorAll('button[data-action="regen"]').forEach(btn=>{
+    btn.onclick = ()=>{
+      const t = templates.find(x=>x.id===btn.dataset.id);
+      const pre = document.getElementById(`code-${t.id}`);
+      pre.textContent = renderPrompt(t);
+    };
+  });
+  document.querySelectorAll('button[data-action="copy"]').forEach(btn=>{
+    btn.onclick = async ()=>{
+      const t = templates.find(x=>x.id===btn.dataset.id);
+      const txt = renderPrompt(t);
+      try { await navigator.clipboard.writeText(txt); btn.textContent='Gekopieerd ✔'; setTimeout(()=>btn.textContent='Kopieer prompt',1200); }
+      catch(e){ alert('Copy mislukt. Selecteer en kopieer handmatig.'); }
+    };
+  });
+}
+
+/** ---- Export naar Markdown ---- **/
+$export.onclick = ()=>{
+  const s = loadAll();
+  const ids = Object.keys(s);
+  if(!ids.length){ alert('Geen ingevulde prompts om te exporteren. Vul eerst velden in.'); return; }
+  let md = `# PromptPilot – Export\n\n`;
+  for(const id of ids){
+    const t = templates.find(x=>x.id===id);
+    if(!t) continue;
+    md += `## ${t.title}\n\n**Hoofdstuk:** ${t.chapter}\n\n**Prompt:**\n\n\`\`\`\n${renderPrompt(t)}\n\`\`\`\n\n`;
+  }
+  const blob = new Blob([md], {type:'text/markdown;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href=url; a.download='promptpilot-export.md'; a.click();
+  setTimeout(()=>URL.revokeObjectURL(url), 500);
+};
+
+/** ---- Reset sessie ---- **/
+$reset.onclick = ()=>{ if(confirm('Alles wissen?')){ localStorage.removeItem(KEY); renderResults(); } };
+
+/** ---- Download project files ---- **/
+const $downloadProject = document.getElementById('downloadProject');
+$downloadProject.onclick = async ()=>{
+  try {
+    // Import JSZip dynamically
+    const JSZip = (await import('https://cdn.skypack.dev/jszip')).default;
+    
+    const zip = new JSZip();
+    
+    // Add all project files
+    const projectFiles = {
+      'index.html': document.documentElement.outerHTML,
+      'package.json': `{
+  "name": "promptpilot-handbook",
+  "version": "1.0.0",
+  "description": "PromptPilot - Power Prompts Handbook for ChatGPT",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "serve": "npx serve ."
+  },
+  "keywords": ["prompts", "chatgpt", "ai", "handbook"],
+  "author": "PromptPilot",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.2.1"
+  }
+}`,
+      'README.md': `# PromptPilot - Power Prompts Handbook
+
+Een handboek met 60+ prompt-sjablonen om effectief samen te werken met ChatGPT.
+
+## Features
+
+- 🎯 60+ gestructureerde prompt-sjablonen
+- 📚 Georganiseerd in 10 hoofdstukken
+- 🔍 Zoek- en filterfunctionaliteit
+- 💾 Lokale opslag van je inputs
+- 📤 Export naar Markdown
+- 📱 Responsive design
+
+## Gebruik
+
+1. Open \`index.html\` in je browser
+2. Blader door de hoofdstukken of gebruik de zoekfunctie
+3. Vul de inputvelden in voor je specifieke situatie
+4. Kopieer de gegenereerde prompt naar ChatGPT
+
+## Lokaal draaien
+
+### Optie 1: Python
+\`\`\`bash
+python -m http.server 8000
+\`\`\`
+
+### Optie 2: Node.js
+\`\`\`bash
+npm install
+npm run serve
+\`\`\`
+
+Ga dan naar \`http://localhost:8000\` of \`http://localhost:3000\`
+
+## Hoofdstukken
+
+1. **Strategie** - Scenariovergelijking, Impact/Effort-matrix
+2. **Schrijven & Redactie** - Redactie met rubric
+3. **Onderzoek** - Methodische samenvatting
+4. **Product/UX** - Feature slicing (MVP/MMP/Delighter)
+5. **Data** - Experiment-ontwerp
+6. **Code/Dev** - Mini-scope implementatie
+7. **Marketing** - Landingpage-skelet
+8. **Sales/Support** - Succesplan 30-60-90
+9. **Vertalen** - Contextuele vertaling
+
+## Licentie
+
+MIT License - Vrij te gebruiken voor persoonlijke en commerciële doeleinden.
+`,
+      '.gitignore': `# Dependencies
+node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# Dependency directories
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+`
+    };
+    
+    // Add each file to the ZIP
+    Object.entries(projectFiles).forEach(([filename, content]) => {
+      zip.file(filename, content);
+    });
+    
+    // Generate and download the ZIP
+    const blob = await zip.generateAsync({type: 'blob'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'promptpilot-project.zip';
+    a.click();
+    
+    // Cleanup
+    setTimeout(() => URL.revokeObjectURL(url), 500);
+    
+    // Update button text temporarily
+    $downloadProject.textContent = 'Gedownload ✔';
+    setTimeout(() => $downloadProject.textContent = 'Download Project', 2000);
+    
+  } catch (error) {
+    console.error('Download failed:', error);
+    alert('Download mislukt. Probeer het opnieuw.');
+  }
+};
+
+/** ---- Chapter filter sidebar ---- **/
+function countByChapter(){
+  const map = {}; templates.forEach(t=> map[t.chapter]=(map[t.chapter]||0)+1); return map;
+}
+
+/** ---- Boot ---- **/
+initFilters();
+</script>
+
+<style>@font-face {font-family: Inter-NjBkMDQwOTZj; font-weight: 600; src: url(data:font/woff2;base64,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) format("woff2");} @font-face {font-family: Inter-NjBkMDQwOTZj; font-weight: 500; src: url(data:font/woff2;base64,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) format("woff2");}</style><div style="position: fixed; bottom: 1rem; right: 1rem; z-index: 2147483647;"></div></body></html>
