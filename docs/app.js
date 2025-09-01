@@ -7,13 +7,14 @@ const $chapterFilter = document.getElementById("chapterFilter");
 const $chaptersList = document.getElementById("chaptersList");
 const $results = document.getElementById("results");
 
+// versiebeheer voor cache-busting
+const version = "v1";
+
 document.addEventListener("DOMContentLoaded", async () => {
   try {
-    const version = "v2"; // of bump bij nieuwe update: v3, v4...
-    const res = await fetch(`data/templates.json?${version}`, {
+    const res = await fetch(`data/templates.v2.json?${version}`, {
       cache: "no-store",
     });
-
     templates = await res.json();
     initFilters();
   } catch (e) {
