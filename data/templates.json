@@ -1,0 +1,53 @@
+[
+  {
+    "id": "1-1",
+    "chapter": "1 · Strategie",
+    "title": "Scenariovergelijking",
+    "when": "Als je verschillende mogelijke toekomsten wilt verkennen en de implicaties per scenario wilt begrijpen.",
+    "deliver": [
+      "3 scenario's (optimistisch, realistisch, pessimistisch)",
+      "Kernimpact per scenario",
+      "Vergelijkende tabel"
+    ],
+    "inputFields": [
+      { "key": "besluit", "label": "Besluit/plan", "type": "text" },
+      { "key": "horizon", "label": "Tijdshorizon", "type": "text" },
+      { "key": "factoren", "label": "Factoren", "type": "textarea" },
+      { "key": "focus", "label": "Focus", "type": "text" }
+    ],
+    "prompt": "Maak een scenariovergelijking voor ⟨besluit/plan⟩.\nTijdshorizon: ⟨…⟩\nFactoren: ⟨…⟩\nFocus: ⟨…⟩\n\nLever:\n1) Optimistisch scenario\n2) Realistisch scenario\n3) Pessimistisch scenario\n+ Tabel: scenario | kernimpact | risico’s | kansen",
+    "output": ["3 scenario's in tekstvorm", "Vergelijkende tabel"],
+    "qc": [
+      "Scenario's duidelijk verschillend",
+      "Impact concreet",
+      "Risico's én kansen benoemd"
+    ]
+  },
+  {
+    "id": "1-2",
+    "chapter": "1 · Strategie",
+    "title": "Impact/Effort-matrix",
+    "when": "Om prioriteiten te stellen tussen ideeën of projecten.",
+    "deliver": [
+      "Indeling 6–10 items in 4 kwadranten",
+      "Aanbevolen volgorde van aanpak"
+    ],
+    "inputFields": [
+      { "key": "items", "label": "Items (lijst)", "type": "textarea" },
+      { "key": "impact", "label": "Impact-criteria", "type": "text" },
+      { "key": "effort", "label": "Effort-criteria", "type": "text" },
+      {
+        "key": "context",
+        "label": "Context (strategie, product, marketing, intern…)",
+        "type": "text"
+      }
+    ],
+    "prompt": "Maak een Impact/Effort-matrix voor ⟨items⟩.\nImpact-criteria: ⟨…⟩\nEffort-criteria: ⟨…⟩\nContext: ⟨…⟩\n\nLever:\n- Matrix met 4 kwadranten\n- Lijst items per kwadrant\n- Aanbevolen volgorde",
+    "output": ["Matrix + lijst", "Aanbevolen volgorde"],
+    "qc": [
+      "Items verdeeld over meerdere kwadranten",
+      "Criteria correct toegepast",
+      "Volgorde logisch"
+    ]
+  }
+]
