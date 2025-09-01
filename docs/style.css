@@ -1,14 +1,30 @@
+/* THEME — geïnspireerd op je poster (blue/cyan + magenta/purple) */
 :root {
-  --accent: #6a1b9a;
-  --bg: #faf8fc;
-  --ink: #1f1f1f;
-  --muted: #6b6b6b;
+  /* Basis */
+  --bg: #f6f8fc; /* zeer licht koel */
   --card: #ffffff;
-  --soft: #eee;
-  --code: #f3f3f3;
+  --ink: #0f1226; /* bijna zwart met blauwzweem */
+  --muted: #6b6f7b;
+  --soft: #e9edf6;
+  --code: #f3f5f8;
   --radius: 14px;
+
+  /* Kleuren */
+  --primary: #0ea5e9; /* cyaan/blauw (licht accent) */
+  --primary-050: #e6f6ff;
+
+  --accent: #ff2d95; /* magenta/roze highlight */
+  --accent-700: #b3125a; /* donkerder rand/hover */
+  --accent-050: #ffe6f2; /* heel licht magenta */
+
+  --purple: #6b21a8; /* pill/heading tint */
+  --purple-050: #f5e9ff;
+  --purple-100: #ead9ff;
+
+  --border: #e5e7f2; /* algemene randkleur */
 }
 
+/* Reset/tekst */
 * {
   box-sizing: border-box;
 }
@@ -20,11 +36,12 @@ body {
   background: var(--bg);
 }
 
+/* Header */
 header {
   position: sticky;
   top: 0;
-  background: #fffccc;
-  border-bottom: 1px solid #e9e5ef;
+  background: #ffffff;
+  border-bottom: 1px solid var(--border);
   z-index: 10;
 }
 .wrap {
@@ -53,6 +70,7 @@ h1 {
   font-size: 13px;
 }
 
+/* Toolbar */
 .toolbar {
   display: flex;
   gap: 12px;
@@ -62,12 +80,13 @@ h1 {
 input[type="search"],
 select {
   padding: 10px 12px;
-  border: 1px solid #e2ddeb;
+  border: 1px solid var(--border);
   border-radius: 10px;
-  background: white;
+  background: #fff;
   min-width: 220px;
 }
 
+/* Layout */
 main {
   display: grid;
   grid-template-columns: 290px 1fr;
@@ -79,7 +98,6 @@ main {
     grid-template-columns: 1fr;
   }
 }
-
 .side,
 .content {
   padding: 16px;
@@ -88,17 +106,18 @@ main {
   position: sticky;
   top: 82px;
   background: var(--card);
-  border: 1px solid #ece7f2;
+  border: 1px solid var(--border);
   border-radius: var(--radius);
   max-height: calc(100dvh - 100px);
   overflow: auto;
 }
 .content {
   background: var(--card);
-  border: 1px solid #ece7f2;
+  border: 1px solid var(--border);
   border-radius: var(--radius);
 }
 
+/* Chapters lijst */
 .chapter {
   padding: 10px 12px;
   border-radius: 10px;
@@ -110,19 +129,20 @@ main {
   border: 1px solid transparent;
 }
 .chapter:hover {
-  background: #f7f2fb;
+  background: var(--primary-050);
 }
 .chapter.active {
-  background: #f4e9fb;
-  border-color: #ead9f8;
+  background: var(--purple-050);
+  border-color: var(--purple-100);
 }
 .count {
   color: var(--muted);
   font-size: 12px;
 }
 
+/* Template kaart */
 .tmpl {
-  border: 1px solid #eee;
+  border: 1px solid var(--soft);
   border-radius: 12px;
   padding: 14px;
   margin-bottom: 14px;
@@ -133,6 +153,7 @@ main {
   font-size: 16px;
 }
 
+/* Meta & pills */
 .meta {
   display: flex;
   gap: 8px;
@@ -141,18 +162,19 @@ main {
 }
 .pill {
   font-size: 12px;
-  color: #5a2b7a;
-  background: #f4e9fb;
-  border: 1px solid #ead9f8;
+  color: var(--purple);
+  background: var(--purple-050);
+  border: 1px solid var(--purple-100);
   padding: 4px 8px;
   border-radius: 999px;
 }
 
+/* Details */
 details {
-  border: 1px dashed #e7e1ec;
+  border: 1px dashed var(--border);
   border-radius: 10px;
   padding: 10px;
-  background: #fcfbfe;
+  background: #fcfdff;
   margin: 10px 0;
 }
 summary {
@@ -160,13 +182,15 @@ summary {
   font-weight: 600;
 }
 
+/* Blocks & headings in blokken */
 .block {
   margin: 8px 0;
 }
 .block b {
-  color: #4a1d6e;
+  color: var(--purple);
 }
 
+/* Code */
 .code {
   background: var(--code);
   border: 1px solid #e5e5e5;
@@ -177,6 +201,7 @@ summary {
   white-space: pre-wrap;
 }
 
+/* Buttons */
 .btns {
   display: flex;
   gap: 8px;
@@ -184,18 +209,25 @@ summary {
   margin-top: 10px;
 }
 button {
-  border: 1px solid #e2ddeb;
-  background: white;
+  border: 1px solid var(--border);
+  background: #fff;
   padding: 10px 12px;
   border-radius: 10px;
   cursor: pointer;
 }
+button:hover {
+  border-color: #d7dbea;
+}
 button.primary {
   background: var(--accent);
   color: #fff;
-  border-color: #5d1388;
+  border-color: var(--accent-700);
+}
+button.primary:hover {
+  filter: brightness(0.96);
 }
 
+/* Form */
 .form {
   display: grid;
   gap: 8px;
@@ -210,14 +242,15 @@ button.primary {
 .form select {
   width: 100%;
   padding: 10px;
-  border: 1px solid #e2ddeb;
+  border: 1px solid var(--border);
   border-radius: 10px;
-  background: white;
+  background: #fff;
 }
 
+/* Misc */
 .hr {
   height: 1px;
-  background: #eee;
+  background: var(--soft);
   margin: 14px 0;
 }
 .empty {
@@ -228,4 +261,27 @@ button.primary {
   color: #8a8a8a;
   font-size: 12px;
   margin-top: 6px;
+}
+
+/* DARK THEME */
+html[data-theme="dark"] {
+  --bg: #0d1117;
+  --card: #161b22;
+  --ink: #e6edf3;
+  --muted: #8b949e;
+  --soft: #21262d;
+  --code: #1e242d;
+  --primary: #58a6ff;
+  --primary-050: #1f6feb;
+  --accent: #ff4da6;
+  --accent-700: #b31d6b;
+  --accent-050: #2a0f1f;
+  --purple: #c297ff;
+  --purple-050: #221930;
+  --purple-100: #37294d;
+  --border: #30363d;
+}
+/* Kleine UI-tweak voor toggle */
+#themeToggle {
+  min-width: 40px;
 }
