@@ -317,3 +317,72 @@ label .hint {
   font-size: var(--fs-0);
   margin-top: 0.15rem;
 }
+/* ===== Fancy landing: 3D roulette ===== */
+.fancy-wrap {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: clamp(420px, 60vh, 720px);
+  perspective: 1200px;
+  padding: 2rem 0;
+}
+.fancy-ring {
+  position: relative;
+  width: min(90vw, 880px);
+  height: min(90vw, 880px);
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: filter 0.2s;
+}
+.fancy-bubble {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  width: 160px;
+  height: 160px;
+  margin: auto;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  transform-style: preserve-3d;
+  cursor: pointer;
+  user-select: none;
+}
+.fancy-bubble .title {
+  text-align: center;
+  font-weight: 700;
+  padding: 0.5rem 0.75rem;
+}
+.fancy-bubble .meta {
+  font-size: var(--fs-0);
+  color: var(--muted);
+}
+.fancy-bubble:focus-visible {
+  outline: 2px solid var(--brand);
+}
+
+/* diepte: bubbels verder weg iets kleiner/doorzichtiger */
+.fancy-bubble[data-depth="back"] {
+  filter: brightness(0.9);
+  opacity: 0.7;
+}
+
+/* instructietekst */
+.fancy-hint {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: var(--fs-0);
+}
+
+/* Fallback voor mensen die animatie willen vermijden */
+@media (prefers-reduced-motion: reduce) {
+  .fancy-wrap {
+    display: none;
+  }
+}

@@ -148,7 +148,179 @@ function route() {
 }
 
 /* ------------------ Views ------------------ */
+// ---- Fancy landing (3D roulette) ----
+function canFancy() {
+  return !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function renderHomeFancy() {
+  if (!canFancy()) {
+    renderHome();
+    return;
+  }
+  const chapters = STATE.chapters || [];
+  if (!chapters.length) {
+    renderHome();
+    return;
+  }
+
+  const radius = Math.min(
+    380,
+    Math.max(
+      220,
+      Math.floor(Math.min(window.innerWidth, window.innerHeight) * 0.35)
+    )
+  );
+  const angleStep = (2 * Math.PI) / chapters.length;
+
+  // container
+  $view.innerHTML = `
+    ${callout(
+      "Welkom! Swipe / sleep aan de carrousel",
+      `<p class="help">Sleep of gebruik de pijltjestoetsen. Klik op een bubbel om een hoofdstuk te openen.</p>`
+    )}
+    <div class="fancy-wrap" aria-label="Hoofdstukken carrousel">
+      <div class="fancy-ring" id="ring" role="list"></div>
+      <div class="fancy-hint">Sleep/scroll • ← → • Enter</div>
+    </div>
+  `;
+
+  const ring = document.getElementById("ring");
+
+  // bouw bubbels
+  chapters.forEach((ch, i) => {
+    const el = document.createElement("button");
+    el.className = "fancy-bubble";
+    el.setAttribute("role", "listitem");
+    el.setAttribute(
+      "aria-label",
+      `${ch.title}, ${ch.templates?.length || 0} opties`
+    );
+    el.innerHTML = `
+      <div class="title">${esc(ch.title)}</div>
+      <div class="meta">${ch.templates?.length || 0} opties</div>
+    `;
+    el.addEventListener("click", () => {
+      location.hash = `#/chapter/${encodeURIComponent(ch.id)}`;
+    });
+    el.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        location.hash = `#/chapter/${encodeURIComponent(ch.id)}`;
+      }
+    });
+    ring.appendChild(el);
+  });
+
+  // layout op cirkel + animatie
+  let rotY = 0; // huidige rotatie (rad)
+  let auto = 0.0045; // auto-rotate snelheid
+  let dragging = false,
+    vx = 0,
+    lastX = 0;
+  const bubbles = [...ring.children];
+
+  function layout() {
+    const n = bubbles.length;
+    bubbles.forEach((el, i) => {
+      const a = i * angleStep + rotY;
+      const x = Math.sin(a) * radius;
+      const z = Math.cos(a) * radius; // diepte
+      const scale = 0.65 + 0.35 * ((z + radius) / (2 * radius)); // 0.65..1.0
+      el.style.transform = `translate3d(${x}px,0,${z}px) scale(${scale})`;
+      el.style.zIndex = String(1000 + Math.round(z));
+      el.dataset.depth = z < 0 ? "back" : "front";
+      // focus het meest frontale element voor keyboard users
+      if (Math.abs(a % (2 * Math.PI)) < angleStep / 2) {
+        el.tabIndex = 0;
+      } else {
+        el.tabIndex = -1;
+      }
+    });
+    ring.style.transform = `rotateX(-10deg)`;
+  }
+
+  function tick() {
+    if (!dragging) rotY += auto;
+    rotY = rotY % (2 * Math.PI);
+    layout();
+    raf = requestAnimationFrame(tick);
+  }
+  let raf = requestAnimationFrame(tick);
+
+  // pointer interactie (drag + inertie)
+  function onDown(e) {
+    dragging = true;
+    cancelAnimationFrame(raf);
+    lastX = px(e);
+    vx = 0;
+  }
+  function onMove(e) {
+    if (!dragging) return;
+    const x = px(e);
+    const dx = x - lastX;
+    lastX = x;
+    vx = dx;
+    rotY += dx * 0.005; // gevoeligheid
+    layout();
+  }
+  function onUp() {
+    if (!dragging) return;
+    dragging = false;
+    // inertie
+    const decay = 0.95;
+    (function glide() {
+      if (Math.abs(vx) < 0.2) {
+        raf = requestAnimationFrame(tick);
+        return;
+      }
+      rotY += vx * 0.005;
+      vx *= decay;
+      layout();
+      requestAnimationFrame(glide);
+    })();
+  }
+  function px(e) {
+    return (e.touches ? e.touches[0].clientX : e.clientX) || 0;
+  }
+
+  ring.addEventListener("pointerdown", onDown);
+  window.addEventListener("pointermove", onMove);
+  window.addEventListener("pointerup", onUp);
+  ring.addEventListener("touchstart", onDown, { passive: true });
+  window.addEventListener("touchmove", onMove, { passive: true });
+  window.addEventListener("touchend", onUp);
+
+  // keyboard
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight") {
+      rotY += 0.35;
+      layout();
+    }
+    if (e.key === "ArrowLeft") {
+      rotY -= 0.35;
+      layout();
+    }
+  });
+
+  // pause on hover (muis)
+  ring.addEventListener("mouseenter", () => {
+    auto = 0;
+  });
+  ring.addEventListener("mouseleave", () => {
+    auto = 0.0045;
+  });
+
+  // initial layout
+  layout();
+}
+
 function renderHome() {
+  if (canFancy()) {
+    renderHomeFancy();
+    return;
+  } // fancy + progressive enhancement
+  // --- fallback grid (jouw bestaande) ---
   const term = STATE.term;
   const filtered = STATE.chapters
     .map((ch) => ({
