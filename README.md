@@ -7,6 +7,10 @@ Kies een template, vul je context in en kopieer een perfect geformatteerde promp
 
 - GitHub Pages: (komt hierna) https://<jouw-username>.github.io/promptpilot/
 
+## Live site
+
+[![GitHub Pages](https://img.shields.io/badge/Live-PromptPilot-4c1)](https://BarendStroobants.github.io/promptpilot/)
+
 ## Features
 
 - Catalogus met hoofdstukken (60 templates)
